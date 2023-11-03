@@ -11,11 +11,11 @@
 			"title": "Blank"
 		},
 		{
-			"name": "blog-alternative",
+			"name": "page-no-title",
 			"postTypes": [
 				"page"
 			],
-			"title": "Blog (Alternative)"
+			"title": "Page (No Title)"
 		},
 		{
 			"name": "404",
@@ -30,35 +30,40 @@
 		"color": {
 			"palette": [
 				{
-					"color": "#ffffff",
+					"color": "#eeeeee",
 					"name": "Base",
 					"slug": "base"
 				},
 				{
-					"color": "#000000",
+					"color": "#262626",
 					"name": "Contrast",
 					"slug": "contrast"
 				},
 				{
-					"color": "#9DFF20",
+					"color": "#4AAE61",
 					"name": "Primary",
 					"slug": "primary"
 				},
 				{
-					"color": "#345C00",
+					"color": "#7E998A",
 					"name": "Secondary",
 					"slug": "secondary"
 				},
 				{
-					"color": "#F6F6F6",
+					"color": "#7E998A",
 					"name": "Tertiary",
 					"slug": "tertiary"
+				},
+				{
+					"color": "rgba(7e 99 8a .8)",
+					"name": "Image Overlay",
+					"slug": "image-overlay"
 				}
 			]
 		},
 		"layout": {
-			"contentSize": "650px",
-			"wideSize": "1200px"
+			"contentSize": "700px",
+			"wideSize": "1000px"
 		},
 		"spacing": {
 			"spacingScale": {
@@ -112,138 +117,54 @@
 				{
 					"fontFace": [
 						{
-							"fontFamily": "DM Sans",
+							"fontFamily": "Jost",
 							"fontStretch": "normal",
 							"fontStyle": "normal",
-							"fontWeight": "400",
+							"fontWeight": "100 900",
 							"src": [
-								"file:./assets/fonts/dm-sans/DMSans-Regular.woff2"
+								"file:./assets/fonts/jost/Jost-VariableFont_wght.woff2"
 							]
 						},
 						{
-							"fontFamily": "DM Sans",
+							"fontFamily": "Jost",
 							"fontStretch": "normal",
 							"fontStyle": "italic",
-							"fontWeight": "400",
+							"fontWeight": "100 900",
 							"src": [
-								"file:./assets/fonts/dm-sans/DMSans-Regular-Italic.woff2"
-							]
-						},
-						{
-							"fontFamily": "DM Sans",
-							"fontStretch": "normal",
-							"fontStyle": "normal",
-							"fontWeight": "700",
-							"src": [
-								"file:./assets/fonts/dm-sans/DMSans-Bold.woff2"
-							]
-						},
-						{
-							"fontFamily": "DM Sans",
-							"fontStretch": "normal",
-							"fontStyle": "italic",
-							"fontWeight": "700",
-							"src": [
-								"file:./assets/fonts/dm-sans/DMSans-Bold-Italic.woff2"
+								"file:./assets/fonts/jost/Jost-Italic-VariableFont_wght.woff2"
 							]
 						}
 					],
-					"fontFamily": "\"DM Sans\", sans-serif",
-					"name": "DM Sans",
-					"slug": "dm-sans"
+					"fontFamily": "\"Jost\", sans-serif",
+					"name": "Jost",
+					"slug": "jost"
 				},
 				{
 					"fontFace": [
 						{
 							"fontDisplay": "block",
-							"fontFamily": "IBM Plex Mono",
+							"fontFamily": "Lato",
 							"fontStretch": "normal",
 							"fontStyle": "normal",
 							"fontWeight": "300",
 							"src": [
-								"file:./assets/fonts/ibm-plex-mono/IBMPlexMono-Light.woff2"
+								"file:./assets/fonts/jost/lato/Lato-Regular.woff2"
 							]
 						},
 						{
 							"fontDisplay": "block",
-							"fontFamily": "IBM Plex Mono",
-							"fontStretch": "normal",
-							"fontStyle": "normal",
-							"fontWeight": "400",
-							"src": [
-								"file:./assets/fonts/ibm-plex-mono/IBMPlexMono-Regular.woff2"
-							]
-						},
-						{
-							"fontDisplay": "block",
-							"fontFamily": "IBM Plex Mono",
-							"fontStretch": "normal",
-							"fontStyle": "italic",
-							"fontWeight": "400",
-							"src": [
-								"file:./assets/fonts/ibm-plex-mono/IBMPlexMono-Italic.woff2"
-							]
-						},
-						{
-							"fontDisplay": "block",
-							"fontFamily": "IBM Plex Mono",
+							"fontFamily": "Lato",
 							"fontStretch": "normal",
 							"fontStyle": "normal",
 							"fontWeight": "700",
 							"src": [
-								"file:./assets/fonts/ibm-plex-mono/IBMPlexMono-Bold.woff2"
+								"file:./assets/fonts/jost/lato/Lato-Bold.woff2"
 							]
 						}
 					],
-					"fontFamily": "'IBM Plex Mono', monospace",
-					"name": "IBM Plex Mono",
-					"slug": "ibm-plex-mono"
-				},
-				{
-					"fontFace": [
-						{
-							"fontFamily": "Inter",
-							"fontStretch": "normal",
-							"fontStyle": "normal",
-							"fontWeight": "200 900",
-							"src": [
-								"file:./assets/fonts/inter/Inter-VariableFont_slnt,wght.ttf"
-							]
-						}
-					],
-					"fontFamily": "\"Inter\", sans-serif",
-					"name": "Inter",
-					"slug": "inter"
-				},
-				{
-					"fontFamily": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif",
-					"name": "System Font",
-					"slug": "system-font"
-				},
-				{
-					"fontFace": [
-						{
-							"fontFamily": "Source Serif Pro",
-							"fontStretch": "normal",
-							"fontStyle": "normal",
-							"fontWeight": "200 900",
-							"src": [
-								"file:./assets/fonts/source-serif-pro/SourceSerif4Variable-Roman.ttf.woff2"
-							]
-						},
-						{
-							"fontFamily": "Source Serif Pro",
-							"fontStretch": "normal",
-							"fontStyle": "italic",
-							"fontWeight": "200 900",
-							"src": [
-								"file:./assets/fonts/source-serif-pro/SourceSerif4Variable-Italic.ttf.woff2"
-							]
-						}
-					],
-					"fontFamily": "\"Source Serif Pro\", serif",
-					"name": "Source Serif Pro",
-					"slug": "source-serif-pro"
+					"fontFamily": "\"Lato\", sans-serif",
+					"name": "Lato",
+					"slug": "lato"
 				}
 			],
 			"fontSizes": [
@@ -389,97 +310,6 @@
 								"textDecoration": "none"
 							}
 						},
-						"typography": {
-							"textDecoration": "none"
-						}
-					}
-				}
-			},
-			"core/comments-title": {
-				"typography": {
-					"fontSize": "var(--wp--preset--font-size--large)"
-				},
-				"spacing": {
-					"margin": {
-						"bottom": "var(--wp--preset--spacing--40)"
-					}
-				}
-			},
-			"core/comment-author-name": {
-				"elements": {
-					"link": {
-						":hover": {
-							"typography": {
-								"textDecoration": "underline"
-							}
-						},
-						":focus": {
-							"typography": {
-								"textDecoration": "underline dashed"
-							}
-						},
-						":active": {
-							"color": {
-								"text": "var(--wp--preset--color--secondary)"
-							},
-							"typography": {
-								"textDecoration": "none"
-							}
-						},
-						"typography": {
-							"textDecoration": "none"
-						}
-					}
-				}
-			},
-			"core/comment-date": {
-				"typography": {
-					"fontSize": "var(--wp--preset--font-size--small)"
-				},
-				"elements": {
-					"link": {
-						":hover": {
-							"typography": {
-								"textDecoration": "underline"
-							}
-						},
-						":focus": {
-							"typography": {
-								"textDecoration": "underline dashed"
-							}
-						},
-						":active": {
-							"color": {
-								"text": "var(--wp--preset--color--secondary)"
-							},
-							"typography": {
-								"textDecoration": "none"
-							}
-						},
-						"typography": {
-							"textDecoration": "none"
-						}
-					}
-				}
-			},
-			"core/comment-edit-link": {
-				"typography": {
-					"fontSize": "var(--wp--preset--font-size--small)"
-				}
-			},
-			"core/comment-reply-link": {
-				"typography": {
-					"fontSize": "var(--wp--preset--font-size--small)"
-				}
-			},
-			"core/comments-pagination": {
-				"spacing": {
-					"margin": {
-						"top": "var(--wp--preset--spacing--40)"
-					}
-				},
-				"elements": {
-					"link": {
 						"typography": {
 							"textDecoration": "none"
 						}
@@ -711,7 +541,7 @@
 			}
 		},
 		"typography": {
-			"fontFamily": "var(--wp--preset--font-family--system-font)",
+			"fontFamily": "var(--wp--preset--font-family--jost)",
 			"fontSize": "var(--wp--preset--font-size--medium)",
 			"lineHeight": "1.6"
 		}
@@ -726,11 +556,6 @@
 			"area": "footer",
 			"name": "footer",
 			"title": "Footer"
-		},
-		{
-			"area": "uncategorized",
-			"name": "comments",
-			"title": "Comments"
 		},
 		{
 			"area": "uncategorized",
