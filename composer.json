@@ -1,0 +1,7 @@
+{
+    "require-dev": {
+        "php-stubs/wordpress-stubs": "^6.3",
+        "phpstan/phpstan": "^1.10",
+        "szepeviktor/phpstan-wordpress": "^1.3"
+    }
+}

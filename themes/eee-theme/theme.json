@@ -395,7 +395,7 @@
 					}
 				}
 			},
-			"core/comments-title":{
+			"core/comments-title": {
 				"typography": {
 					"fontSize": "var(--wp--preset--font-size--large)"
 				},

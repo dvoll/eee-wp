@@ -24,12 +24,25 @@
 			"**/*.code-search": true,
 			"**/wp-content": true
 		},
+		/* PHP start */
+		"php.stubs": [
+			"*",
+			"wordpress"
+		],
+		"phpstan.binPath": "../../vendor/bin/phpstan",
+		"phpstan.configFile": "../../phpstan.neon",
+		"phpstan.timeout": 100000,
+		"php.format.codeStyle": "WordPress",
+		"[php]": {
+			"editor.formatOnSave": true,
+			"editor.defaultFormatter": "DEVSENSE.phptools-vscode"
+		},
+		/* PHP end */
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"[html]": {
-			"editor.defaultFormatter": "esbenp.prettier-vscode"
-		},
-		"[php]": {
-			"editor.defaultFormatter": "esbenp.prettier-vscode"
+			"editor.formatOnSave": true,
+			"editor.defaultFormatter": "vscode.html-language-features",
+			"files.insertFinalNewline": true
 		},
 		"[javascript]": {
 			"editor.formatOnSave": true,
@@ -46,6 +59,10 @@
 		"[typescriptreact]": {
 			"editor.formatOnSave": true,
 			"editor.defaultFormatter": "esbenp.prettier-vscode"
-		}
+		},
+		"cSpell.words": [
+			"alignwide",
+			"twentytwentythree"
+		]
 	}
 }

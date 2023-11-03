@@ -12,7 +12,8 @@
 	<!-- wp:column -->
 	<div class="wp-block-column">
 		<!-- wp:paragraph {"style":{"typography":{"lineHeight":"1.2"}},"fontSize":"x-large"} -->
-		<p class="has-x-large-font-size" style="line-height:1.2"><?php echo esc_html_x( 'Got any book recommendations?', 'sample content for call to action', 'twentytwentythree' ); ?>
+		<p class="has-x-large-font-size" style="line-height:1.2">
+			<?php echo esc_html_x( 'Got any book recommendations?', 'sample content for call to action', 'twentytwentythree' ); ?>
 		</p>
 		<!-- /wp:paragraph -->
 
@@ -21,7 +22,7 @@
 			<!-- wp:button {"fontSize":"small"} -->
 			<div class="wp-block-button has-custom-font-size has-small-font-size">
 				<a class="wp-block-button__link wp-element-button">
-				<?php echo esc_html_x( 'Get In Touch', 'sample content for call to action button', 'twentytwentythree' ); ?>
+					<?php echo esc_html_x( 'Get In Touch', 'sample content for call to action button', 'twentytwentythree' ); ?>
 				</a>
 			</div>
 			<!-- /wp:button -->
@@ -33,7 +34,7 @@
 	<!-- wp:column -->
 	<div class="wp-block-column">
 		<!-- wp:separator {"className":"is-style-wide"} -->
-		<hr class="wp-block-separator has-alpha-channel-opacity is-style-wide"/>
+		<hr class="wp-block-separator has-alpha-channel-opacity is-style-wide" />
 		<!-- /wp:separator -->
 	</div>
 	<!-- /wp:column -->
