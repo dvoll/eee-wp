@@ -33,5 +33,20 @@ services:
         /* JS Script debug */
         define('SCRIPT_DEBUG', true );
     restart: always
+  wp-cli:
+    # To execute run: 'docker-wp <command>' ('docker compose run --rm wp-cli')
+    depends_on:
+      - db
+      - wordpress
+    image: wordpress:cli
+    volumes_from:
+      - wordpress
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: wp
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpressdevdbpassword
+    # command: tail -f /dev/null
+    command: wp
 volumes:
   db_data: {}
