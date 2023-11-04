@@ -148,7 +148,7 @@
 							"fontStyle": "normal",
 							"fontWeight": "300",
 							"src": [
-								"file:./assets/fonts/jost/lato/Lato-Regular.woff2"
+								"file:./assets/fonts/lato/Lato-Regular.woff2"
 							]
 						},
 						{
@@ -158,7 +158,7 @@
 							"fontStyle": "normal",
 							"fontWeight": "700",
 							"src": [
-								"file:./assets/fonts/jost/lato/Lato-Bold.woff2"
+								"file:./assets/fonts/lato/Lato-Bold.woff2"
 							]
 						}
 					],
