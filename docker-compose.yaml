@@ -18,9 +18,9 @@ services:
       - db
     image: wordpress:6.3
     volumes:
-      - ./wp-content:/var/www/html/wp-content/
       - ./plugins/eee-blocks:/var/www/html/wp-content/plugins/eee-blocks
       - ./themes/eee-theme:/var/www/html/wp-content/themes/eee-theme
+      - ./wp-content:/var/www/html/wp-content/
     ports:
       - "8086:80"
     environment:
