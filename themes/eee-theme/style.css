@@ -12,3 +12,21 @@ License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 Text Domain: eee-23
 Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, sticky-post, wide-blocks, block-styles, accessibility-ready
 */
+
+/* Code for link underline transition. Paste as block style in theme.json */
+/* & a:where(:not(.wp-element-button)) {
+    transition: color .25s, background-position .25s;
+    transition-timing-function: cubic-bezier(.79, .14, .15, .86);
+    --a-ln-pos: 100%;
+    --a-ln-clr: var(--wp--preset--color--tertiary);
+    --a-ln-act-clr: var(--wp--preset--color--primary);
+    background: linear-gradient(90deg, var(--a-ln-act-clr) 0%, var(--a-ln-act-clr) 50%, var(--a-ln-clr) 50.0000001%, var(--a-ln-clr) 100%) var(--a-ln-pos) bottom / 200% 2px no-repeat;
+}
+
+& a:where(:not(.wp-element-button)):hover {
+    --a-ln-pos: 0%;
+} */
+/* Hover and focus styles separator because of bug in wordpress */
+/* & a:where(:not(.wp-element-button)):focus {
+    --a-ln-pos: 0%;
+} */
