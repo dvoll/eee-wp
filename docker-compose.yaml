@@ -18,9 +18,9 @@ services:
       - db
     image: wordpress:6.3
     volumes:
+      - wordpress:/var/www/html
       - ./plugins/eee-blocks:/var/www/html/wp-content/plugins/eee-blocks
       - ./themes/eee-theme:/var/www/html/wp-content/themes/eee-theme
-      - ./wp-content:/var/www/html/wp-content/
     ports:
       - "8086:80"
     environment:
@@ -41,12 +41,15 @@ services:
     image: wordpress:cli
     volumes_from:
       - wordpress
+    user: 33:33
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_NAME: wp
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpressdevdbpassword
+      HOME: /tmp
     # command: tail -f /dev/null
     command: wp
 volumes:
   db_data: {}
+  wordpress:
