@@ -19,7 +19,7 @@ services:
     image: wordpress:6.3
     volumes:
       - wordpress:/var/www/html
-      - ./plugins/eee-blocks:/var/www/html/wp-content/plugins/eee-blocks
+      - ./plugins/eee23-blocks:/var/www/html/wp-content/plugins/eee23-blocks
       - ./themes/eee-theme:/var/www/html/wp-content/themes/eee-theme
     ports:
       - "8086:80"

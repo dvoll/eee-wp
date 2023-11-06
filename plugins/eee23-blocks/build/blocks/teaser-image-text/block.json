@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "eee23-blocks/teaser-image-text",
+  "version": "0.1.0",
+  "title": "Bild/Text Teaser",
+  "category": "media",
+  "icon": "dashicons-format-image",
+  "description": "Verlinkbares Bild mit Text und Link",
+  "supports": {
+    "html": false,
+    "color": {
+      "text": true,
+      "background": true,
+      "link": false
+    }
+  },
+  "textdomain": "teaser-image-text",
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "linkUrl": {
+      "type": "string"
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "focalPointValueX": {
+      "type": "number"
+    },
+    "focalPointValueY": {
+      "type": "number"
+    },
+    "linkTarget": {
+      "type": "string"
+    },
+    "linkRel": {
+      "type": "string"
+    },
+    "style": {
+      "type": "object",
+      "default": {
+        "color": {
+          "text": "var(--wp--preset--color--base)",
+          "background": "var(--wp--preset--color--image-overlay)"
+        }
+      }
+    }
+  }
+}

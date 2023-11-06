@@ -4,7 +4,7 @@
 			"path": "themes/eee-theme"
 		},
 		{
-			"path": "plugins/eee-blocks"
+			"path": "plugins/eee23-blocks"
 		},
 		{
 			"path": ".",
@@ -16,7 +16,7 @@
 			"themes": true,
 			"wp-content/themes/eee-theme": true,
 			"plugins": true,
-			"wp-content/plugins/eee-blocks": true,
+			"wp-content/plugins/eee23-blocks": true,
 		},
 		"search.exclude": {
 			"**/node_modules": true,
@@ -63,6 +63,7 @@
 		"cSpell.words": [
 			"alignwide",
 			"twentytwentythree"
-		]
+		],
+		"cSpell.language": "en,de-DE"
 	}
 }
