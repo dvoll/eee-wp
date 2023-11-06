@@ -55,7 +55,7 @@
 					"slug": "tertiary"
 				},
 				{
-					"color": "rgba(7e 99 8a .8)",
+					"color": "rgba(126 153 138 / .8)",
 					"name": "Image Overlay",
 					"slug": "image-overlay"
 				}
