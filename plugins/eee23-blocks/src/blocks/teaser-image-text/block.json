@@ -5,7 +5,7 @@
 	"version": "0.1.0",
 	"title": "Bild/Text Teaser",
 	"category": "media",
-	"icon": "dashicons-format-image",
+	"icon": "format-image",
 	"description": "Verlinkbares Bild mit Text und Link",
 	"supports": {
 		"html": false,
