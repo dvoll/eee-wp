@@ -1,0 +1,47 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-eee23-blocks-grid-col {
+    grid-column: var(--start-col, 1) / span var(--col-span, 12);
+    --start-col: var(--start-col-mobile);
+    --col-span: var(--col-span-mobile);
+        
+    @media screen and (min-width: 780px) {
+        --start-col: var(--start-col-tablet);
+        --col-span: var(--col-span-tablet);
+    }
+    
+    @media screen and (min-width: 1080px) {
+        --start-col: var(--start-col-desktop);
+        --col-span: var(--col-span-desktop);
+    }
+
+	/**
+	* Individual Column Alignment
+	*/
+	&.is-vertically-aligned-top {
+		align-self: flex-start;
+	}
+
+	&.is-vertically-aligned-center {
+		align-self: center;
+	}
+
+	&.is-vertically-aligned-bottom {
+		align-self: flex-end;
+	}
+
+	&.is-vertically-aligned-stretch {
+		align-self: stretch;
+	}
+
+	// &.is-vertically-aligned-top,
+	// &.is-vertically-aligned-center,
+	// &.is-vertically-aligned-bottom {
+	// 	width: 100%;
+	// }
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "eee23-blocks/grid-col",
+  "version": "0.1.0",
+  "title": "Grid column",
+  "category": "design",
+  "icon": "columns",
+  "description": "Grid Column für das Layout Grid",
+  "parent": [
+    "eee23-blocks/grid"
+  ],
+  "supports": {
+    "html": false,
+    "reusable": false,
+    "anchor": true,
+    "layout": true
+  },
+  "textdomain": "grid-col",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "startCol": {
+      "type": "number"
+    },
+    "startColTablet": {
+      "type": "number"
+    },
+    "startColDesktop": {
+      "type": "number"
+    },
+    "colSpan": {
+      "type": "number"
+    },
+    "colSpanTablet": {
+      "type": "number"
+    },
+    "colSpanDesktop": {
+      "type": "number"
+    },
+    "verticalAlignment": {
+      "type": "string"
+    }
+  }
+}

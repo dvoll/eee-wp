@@ -1,0 +1,43 @@
+/*!*******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks/grid-col/style.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-eee23-blocks-grid-col {
+  grid-column: var(--start-col, 1)/span var(--col-span, 12);
+  --start-col: var(--start-col-mobile);
+  --col-span: var(--col-span-mobile);
+  /**
+  * Individual Column Alignment
+  */
+}
+@media screen and (min-width: 780px) {
+  .wp-block-eee23-blocks-grid-col {
+    --start-col: var(--start-col-tablet);
+    --col-span: var(--col-span-tablet);
+  }
+}
+@media screen and (min-width: 1080px) {
+  .wp-block-eee23-blocks-grid-col {
+    --start-col: var(--start-col-desktop);
+    --col-span: var(--col-span-desktop);
+  }
+}
+.wp-block-eee23-blocks-grid-col.is-vertically-aligned-top {
+  align-self: flex-start;
+}
+.wp-block-eee23-blocks-grid-col.is-vertically-aligned-center {
+  align-self: center;
+}
+.wp-block-eee23-blocks-grid-col.is-vertically-aligned-bottom {
+  align-self: flex-end;
+}
+.wp-block-eee23-blocks-grid-col.is-vertically-aligned-stretch {
+  align-self: stretch;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

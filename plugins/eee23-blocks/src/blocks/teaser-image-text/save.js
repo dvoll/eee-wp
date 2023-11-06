@@ -41,13 +41,24 @@ export default function save({ attributes, className }) {
                     <a
                         className="wp-block-eee23-blocks-teaser-image-text__link"
                         aria-label="Seite aufrufen"
+                        target={linkTarget}
+                        rel={linkTarget ? 'noopener' : undefined}
                         href={linkUrl}
                     >
                         <ArrowIcon />
                     </a>
                 )}
             </div>
-            <a className="wp-block-eee23-blocks-teaser-image-text__linkclickarea" aria-hidden="true" href={linkUrl}></a>
+            {linkUrl && (
+                <a
+                    className="wp-block-eee23-blocks-teaser-image-text__linkclickarea"
+                    aria-hidden="true"
+                    tabIndex={-1}
+                    target={linkTarget}
+                    rel={linkTarget ? 'noopener' : undefined}
+                    href={linkUrl}
+                ></a>
+            )}
         </div>
     );
 }

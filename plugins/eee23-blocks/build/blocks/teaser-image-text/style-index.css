@@ -14,6 +14,7 @@
   grid-template: "main" 1fr/1fr;
   justify-items: stretch;
   align-items: stretch;
+  max-width: 344px;
 }
 .wp-block-eee23-blocks-teaser-image-text__image-container {
   -ms-grid-row: 1;
@@ -41,7 +42,8 @@
   position: relative;
   z-index: 1;
   align-self: self-end;
-  padding-block: 1.5rem;
+  padding-block-start: 1rem;
+  padding-block-end: 1rem;
   padding-inline: 1rem;
   margin-inline-end: 1rem;
   display: flex;

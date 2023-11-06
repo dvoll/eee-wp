@@ -26,6 +26,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function eee23_blocks_block_init(): void {
 	register_block_type( __DIR__ . '/build/blocks/teaser-image-text' );
+	register_block_type( __DIR__ . '/build/blocks/grid' );
+	register_block_type( __DIR__ . '/build/blocks/grid-col' );
 }
 add_action( 'init', 'eee23_blocks_block_init' );
 
@@ -34,6 +36,6 @@ add_action( 'init', 'eee23_blocks_block_init' );
  * Add custom image size for teaser-image-text block
  */
 function eee23_blocks_image_sizes(): void {
-	add_image_size( 'eee23-blocks-teaser', 344, 516 );
+	add_image_size( 'eee23-blocks-teaser', 344, 516 ); // TODO: use size in block
 }
 add_action( 'after_setup_theme', 'eee23_blocks_image_sizes' );

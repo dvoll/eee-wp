@@ -9,7 +9,7 @@ import {
     AlignmentToolbar,
 } from '@wordpress/block-editor';
 import { Template } from '@wordpress/blocks';
-import { Button, FocalPointPicker, PanelBody, Popover, RangeControl, ToolbarButton } from '@wordpress/components';
+import { Button, FocalPointPicker, PanelBody, Popover, ToolbarButton } from '@wordpress/components';
 import { link, linkOff } from '@wordpress/icons';
 import { useCallback } from 'react';
 import { useState, useEffect, useRef } from 'react';
@@ -240,7 +240,11 @@ const edit = ({ attributes, setAttributes, isSelected, style }: any) => {
                         <InnerBlocks template={BLOCKS_TEMPLATE} />
                     </div>
                     {linkUrl && (
-                        <a className="wp-block-eee23-blocks-teaser-image-text__link" aria-label="Seite aufrufen">
+                        <a
+                            className="wp-block-eee23-blocks-teaser-image-text__link"
+                            aria-label="Seite aufrufen"
+                            target={linkTarget}
+                        >
                             <ArrowIcon />
                         </a>
                     )}

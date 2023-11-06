@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "eee23-blocks/grid",
+  "version": "0.1.0",
+  "title": "Layout Grid",
+  "category": "design",
+  "icon": "grid-view",
+  "description": "Grid für das Layout",
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "spacing": {
+      "blockGap": {
+        "__experimentalDefault": "1.5em",
+        "sides": [
+          "vertical",
+          "horizontal"
+        ]
+      },
+      "margin": [
+        "top",
+        "bottom"
+      ],
+      "padding": [
+        "top",
+        "bottom"
+      ],
+      "__experimentalDefaultControls": {
+        "padding": true,
+        "blockGap": true
+      }
+    },
+    "layout": {
+      "allowSwitching": false,
+      "allowInheriting": false,
+      "allowEditing": false,
+      "default": {
+        "type": "grid",
+        "columnCount": 12,
+        "minimumColumnWidth": "none"
+      }
+    }
+  },
+  "textdomain": "grid",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

@@ -296,7 +296,8 @@ const edit = ({
     template: BLOCKS_TEMPLATE
   })), linkUrl && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "wp-block-eee23-blocks-teaser-image-text__link",
-    "aria-label": "Seite aufrufen"
+    "aria-label": "Seite aufrufen",
+    target: linkTarget
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_icons__WEBPACK_IMPORTED_MODULE_3__.ArrowIcon, null)))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (edit);
@@ -463,10 +464,15 @@ function save({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null)), linkUrl && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "wp-block-eee23-blocks-teaser-image-text__link",
     "aria-label": "Seite aufrufen",
+    target: linkTarget,
+    rel: linkTarget ? 'noopener' : undefined,
     href: linkUrl
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_icons__WEBPACK_IMPORTED_MODULE_2__.ArrowIcon, null))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_icons__WEBPACK_IMPORTED_MODULE_2__.ArrowIcon, null))), linkUrl && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "wp-block-eee23-blocks-teaser-image-text__linkclickarea",
     "aria-hidden": "true",
+    tabIndex: -1,
+    target: linkTarget,
+    rel: linkTarget ? 'noopener' : undefined,
     href: linkUrl
   }));
 }
@@ -563,7 +569,7 @@ module.exports = window["wp"]["primitives"];
   \*************************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"eee23-blocks/teaser-image-text","version":"0.1.0","title":"Bild/Text Teaser","category":"media","icon":"dashicons-format-image","description":"Verlinkbares Bild mit Text und Link","supports":{"html":false,"color":{"text":true,"background":true,"link":false}},"textdomain":"teaser-image-text","editorScript":"file:./index.js","viewScript":"file:./view.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"linkUrl":{"type":"string"},"imageUrl":{"type":"string"},"focalPointValueX":{"type":"number"},"focalPointValueY":{"type":"number"},"linkTarget":{"type":"string"},"linkRel":{"type":"string"},"style":{"type":"object","default":{"color":{"text":"var(--wp--preset--color--base)","background":"var(--wp--preset--color--image-overlay)"}}}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"eee23-blocks/teaser-image-text","version":"0.1.0","title":"Bild/Text Teaser","category":"media","icon":"format-image","description":"Verlinkbares Bild mit Text und Link","supports":{"html":false,"color":{"text":true,"background":true,"link":false}},"textdomain":"teaser-image-text","editorScript":"file:./index.js","viewScript":"file:./view.js","editorStyle":"file:./index.css","style":"file:./style-index.css","attributes":{"linkUrl":{"type":"string"},"imageUrl":{"type":"string"},"focalPointValueX":{"type":"number"},"focalPointValueY":{"type":"number"},"linkTarget":{"type":"string"},"linkRel":{"type":"string"},"style":{"type":"object","default":{"color":{"text":"var(--wp--preset--color--base)","background":"var(--wp--preset--color--image-overlay)"}}}}}');
 
 /***/ })
 
