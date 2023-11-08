@@ -13,9 +13,9 @@
 	],
 	"settings": {
 		"files.exclude": {
-			"themes": true,
+			"themes/eee-theme": true,
 			"wp-content/themes/eee-theme": true,
-			"plugins": true,
+			"plugins/eee23-blocks": true,
 			"wp-content/plugins/eee23-blocks": true,
 		},
 		"search.exclude": {
