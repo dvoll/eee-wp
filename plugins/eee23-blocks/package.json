@@ -18,7 +18,8 @@
 		"@types/react": "18.2.0",
 		"@types/wordpress__block-editor": "^11.5.7",
 		"@wordpress/eslint-plugin": "^17.2.0",
-		"@wordpress/scripts": "^26.16.0"
+		"@wordpress/scripts": "^26.16.0",
+		"eslint-config-prettier": "^9.0.0"
 	},
 	"dependencies": {
 		"@wordpress/block-editor": "~12.10.12",
@@ -26,5 +27,8 @@
 		"@wordpress/components": "~25.8.12",
 		"@wordpress/i18n": "~4.42.12",
 		"@wordpress/icons": "~9.33.12"
+	},
+	"peerDependencies": {
+		"react": "^18.2.0"
 	}
 }

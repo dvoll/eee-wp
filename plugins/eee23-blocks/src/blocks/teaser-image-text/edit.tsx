@@ -6,7 +6,6 @@ import {
     MediaUpload,
     useBlockProps,
     __experimentalLinkControl as LinkControl,
-    AlignmentToolbar,
 } from '@wordpress/block-editor';
 import { Template } from '@wordpress/blocks';
 import { Button, FocalPointPicker, PanelBody, Popover, ToolbarButton } from '@wordpress/components';
@@ -23,9 +22,8 @@ import { __ } from '@wordpress/i18n';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
-import InputControl from '@wordpress/components/build-types/input-control';
 
-interface CardLinkBlockAttributes {
+export interface BlockAttributes {
     imageId?: number;
     imageUrl?: string;
     focalPointValueX: number;
@@ -38,21 +36,11 @@ interface CardLinkBlockAttributes {
 
 const NEW_TAB_REL = 'noreferrer noopener';
 
-const edit = ({ attributes, setAttributes, isSelected, style }: any) => {
+const Edit = ({ attributes, setAttributes, isSelected }: any) => {
     const moduleRef = useRef();
 
-    console.log('attributes.style', attributes.style);
-    console.log('style', style);
-
-    const {
-        imageId,
-        imageUrl,
-        focalPointValueX,
-        focalPointValueY,
-        linkUrl,
-        linkTarget,
-        linkRel,
-    }: CardLinkBlockAttributes = attributes;
+    const { imageId, imageUrl, focalPointValueX, focalPointValueY, linkUrl, linkTarget, linkRel }: BlockAttributes =
+        attributes;
 
     const BLOCKS_TEMPLATE = [
         [
@@ -83,9 +71,12 @@ const edit = ({ attributes, setAttributes, isSelected, style }: any) => {
         ] as Template,
     ];
 
-    const onFocalPointChange = useCallback((value: { x: number; y: number }) => {
-        setAttributes({ focalPointValueX: value.x ?? 0.5, focalPointValueY: value.y ?? 0.5 });
-    }, []);
+    const onFocalPointChange = useCallback(
+        (value: { x: number; y: number }) => {
+            setAttributes({ focalPointValueX: value.x ?? 0.5, focalPointValueY: value.y ?? 0.5 });
+        },
+        [setAttributes]
+    );
 
     const mediaPosition = ({ x, y } = { x: 0.5, y: 0.5 }) => {
         return `${Math.round(x * 100)}% ${Math.round(y * 100)}%`;
@@ -98,7 +89,7 @@ const edit = ({ attributes, setAttributes, isSelected, style }: any) => {
     const blockProps = useBlockProps({
         className: isURLSet ? 'eee-has-link' : undefined,
         ref: moduleRef,
-        style: style,
+        // style,
     });
 
     function startEditing(event: { preventDefault: () => void }) {
@@ -163,7 +154,7 @@ const edit = ({ attributes, setAttributes, isSelected, style }: any) => {
                         allowedTypes={['image']}
                         value={imageId}
                         render={({ open }) => (
-                            <Button isDefault onClick={open}>
+                            <Button variant="primary" onClick={open}>
                                 {!imageId ? 'Bild auswählen' : 'Bild ändern'}
                             </Button>
                         )}
@@ -209,7 +200,6 @@ const edit = ({ attributes, setAttributes, isSelected, style }: any) => {
                         className="wp-block-navigation-link__inline-link-input"
                         value={{ url: linkUrl, opensInNewTab }}
                         onChange={({ url: newURL = '', opensInNewTab: newOpensInNewTab }: any) => {
-                            console.log('newUrl', newURL);
                             setAttributes({ linkUrl: newURL });
 
                             if (opensInNewTab !== newOpensInNewTab) {
@@ -240,6 +230,7 @@ const edit = ({ attributes, setAttributes, isSelected, style }: any) => {
                         <InnerBlocks template={BLOCKS_TEMPLATE} />
                     </div>
                     {linkUrl && (
+                        // eslint-disable-next-line jsx-a11y/anchor-is-valid
                         <a
                             className="wp-block-eee23-blocks-teaser-image-text__link"
                             aria-label="Seite aufrufen"
@@ -253,4 +244,4 @@ const edit = ({ attributes, setAttributes, isSelected, style }: any) => {
         </>
     );
 };
-export default edit;
+export default Edit;

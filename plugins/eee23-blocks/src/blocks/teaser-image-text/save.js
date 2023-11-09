@@ -6,18 +6,18 @@ import { ArrowIcon } from './icons';
  * be combined into the final markup, which is then serialized by the block
  * editor into `post_content`.
  *
+ * @param {{attributes: import('./edit').BlockAttributes}} root0
+ * @return {import("@wordpress/element").WPElement} Element to render
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
- *
- * @return {import("@wordpress/element").WPElement} Element to render.
  */
-export default function save({ attributes, className }) {
+export default function save({ attributes }) {
     const { linkUrl, linkTarget, imageUrl, focalPointValueX, focalPointValueY } = attributes;
 
     const blockProps = useBlockProps.save({
         className: ['eee23-blocks-teaser-image-text', linkUrl !== undefined ? 'eee-has-link' : undefined].join(' '),
     });
 
-    const mediaPosition = ({ x, y } = { x: 0.5, y: 0.5 }) => {
+    const mediaPosition = ({ x = 0.5, y = 0.5 }) => {
         return `${Math.round(x * 100)}% ${Math.round(y * 100)}%`;
     };
 
@@ -50,6 +50,7 @@ export default function save({ attributes, className }) {
                 )}
             </div>
             {linkUrl && (
+                // eslint-disable-next-line jsx-a11y/anchor-has-content
                 <a
                     className="wp-block-eee23-blocks-teaser-image-text__linkclickarea"
                     aria-hidden="true"

@@ -12,18 +12,17 @@
     grid-template: "main" 1fr / 1fr;
     justify-items: stretch;
     align-items: stretch;
-    max-width: 344px;
 
-    &.eee-has-link:hover {
-        // z-index: 1;
-    }
-    
     &__image-container {
         aspect-ratio: 2/3;
         grid-area: main;
         overflow: hidden;
+
+        @media screen and (max-width: 779px) {
+            aspect-ratio: 4/3;
+        }
     }
-    
+
     &__image {
         display: block;
         width: 100%;
@@ -32,7 +31,7 @@
         transition: transform .35s cubic-bezier(.79, .14, .15, .86);
         will-change: transform;
 
-        
+
         .wp-block-eee23-blocks-teaser-image-text.eee-has-link:hover & {
             transform: scale(1.075);
         }
@@ -54,6 +53,7 @@
         min-height: 9.5rem;
         box-sizing: border-box;
         background-color: inherit;
+        margin-block-start: 4rem;
     }
 
     &__inner-blocks-wrapper {

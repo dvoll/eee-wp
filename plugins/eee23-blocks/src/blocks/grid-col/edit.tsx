@@ -33,7 +33,7 @@ import { useCallback } from 'react';
  *
  * @return {Element} Element to render.
  */
-export default function edit({ attributes, setAttributes, clientId }: any) {
+export default function Edit({ attributes, setAttributes, clientId }: any) {
     const hasChildBlocks = useSelect(
         (select) => {
             const { getBlockOrder } = select(store);
