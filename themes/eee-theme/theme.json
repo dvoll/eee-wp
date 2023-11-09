@@ -71,7 +71,7 @@
 			},
 			"spacingSizes": [
 				{
-					"size": "clamp(1.5rem, 5vw, 2rem)",
+					"size": "1.5rem",
 					"slug": "30",
 					"name": "1"
 				},
