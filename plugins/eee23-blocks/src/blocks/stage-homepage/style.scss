@@ -1,0 +1,48 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-eee23-blocks-stage-homepage {
+    display: grid;
+    grid-template: [content-start media-start] 1fr [content-end media-end] / 100fr [content-start] minmax(36.75rem, 1fr) [content-end] 1.5rem [media-start] minmax(36.75rem, 1fr) 100fr [media-end];
+    margin-inline: auto;
+    padding-right: var(--wp--style--root--padding-right) !important;
+    padding-left: var(--wp--style--root--padding-left) !important;
+
+    &__media-container {
+        position: relative;
+        grid-area: media;
+        overflow: hidden;
+        justify-self: stretch;
+        align-self: stretch;
+        max-width: 690px;
+        height: 80vh;
+        min-height: 100%;
+        max-height: 720px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: var(--stage-background-color, transparent);
+        }
+    }
+
+    &__media {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    &__content {
+        grid-area: content;
+        justify-self: start;
+        align-self: center;
+    }
+}
+
+video.wp-block-eee23-blocks-stage-homepage__media, img.wp-block-eee23-blocks-stage-homepage__media {
+    height: 100%;
+}
