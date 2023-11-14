@@ -7,10 +7,20 @@
 
 .wp-block-eee23-blocks-stage-homepage {
     display: grid;
-    grid-template: [content-start media-start] 1fr [content-end media-end] / 100fr [content-start] minmax(36.75rem, 1fr) [content-end] 1.5rem [media-start] minmax(36.75rem, 1fr) 100fr [media-end];
+    grid-template: [content-start media-start] 1fr [content-end media-end] / 100fr [content-start] minmax(auto, 36.75rem) [content-end] 1.5rem [media-start] minmax(auto, 36.75rem) 100fr [media-end];
     margin-inline: auto;
     padding-right: var(--wp--style--root--padding-right) !important;
     padding-left: var(--wp--style--root--padding-left) !important;
+
+    @media screen and (max-width: 1079px) {
+        display: flex;
+        flex-direction: row-reverse;
+        column-gap: 1.5rem;
+    }
+
+    @media screen and (max-width: 779px) {
+        flex-direction: column;
+    }
 
     &__media-container {
         position: relative;
