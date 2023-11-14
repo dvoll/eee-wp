@@ -1,9 +1,27 @@
 <!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group">
-	<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"bottom":"var:preset|spacing|40"}}},"layout":{"type":"flex","justifyContent":"space-between"}} -->
-	<div class="wp-block-group alignwide" style="padding-bottom:var(--wp--preset--spacing--40)">
-		<!-- wp:site-title {"level":0} /-->
-		<!-- wp:navigation {"layout":{"type":"flex","setCascadingProperties":true,"justifyContent":"right"}} /-->
+	<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"1rem","bottom":"1rem"}}},"layout":{"type":"flex","justifyContent":"space-between"}} -->
+	<div class="wp-block-group alignwide" style="padding-top:1rem;padding-bottom:1rem">
+		<!-- wp:group {"style":{"spacing":{"blockGap":"1rem"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+		<div class="wp-block-group"><!-- wp:site-logo {"width":40,"shouldSyncIcon":true} /-->
+
+			<!-- wp:group {"style":{"spacing":{"padding":{"right":"0","left":"0","top":"0","bottom":"0"},"blockGap":"0"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+			<div class="wp-block-group" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0">
+				<!-- wp:paragraph {"style":{"typography":{"fontSize":"0.75rem"},"elements":{"link":{"color":{"text":"#919191"}}},"color":{"text":"#919191"}},"className":"eee23-no-link"} -->
+				<p class="eee23-no-link has-text-color has-link-color" style="color:#919191;font-size:0.75rem"><a
+						href="/">Dipl.-Ing. (FH)</a></p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|contrast"}}},"typography":{"fontSize":"1.25rem","lineHeight":"1"}},"textColor":"contrast","className":"eee23-no-link","fontFamily":"lato"} -->
+				<p class="eee23-no-link has-contrast-color has-text-color has-link-color has-lato-font-family"
+					style="font-size:1.25rem;line-height:1"><a href="/"><strong>Frank Titkemeyer</strong></a></p>
+				<!-- /wp:paragraph -->
+			</div>
+			<!-- /wp:group -->
+		</div>
+		<!-- /wp:group -->
+
+		<!-- wp:navigation {"ref":5,"layout":{"type":"flex","setCascadingProperties":true,"justifyContent":"right"}} /-->
 	</div>
 	<!-- /wp:group -->
 </div>

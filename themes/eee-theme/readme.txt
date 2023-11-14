@@ -1,4 +1,4 @@
-=== Twenty Twenty-Three ===
+=== EEE 2023 Theme ===
 Contributors: Dario Voll
 Requires at least: 6.3
 Tested up to: 6.3

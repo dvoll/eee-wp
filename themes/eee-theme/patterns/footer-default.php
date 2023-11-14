@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Default Footer
- * Slug: twentytwentythree/footer-default
+ * Slug: eee23-theme/footer-default
  * Categories: footer
  * Block Types: core/template-part/footer
  */
@@ -16,8 +16,8 @@
 			<?php
 			printf(
 				/* Translators: WordPress link. */
-				esc_html__( 'Proudly powered by %s', 'twentytwentythree' ),
-				'<a href="' . esc_url( __( 'https://wordpress.org', 'twentytwentythree' ) ) . '" rel="nofollow">WordPress</a>'
+				esc_html__( 'Proudly powered by %s', 'eee23-theme' ),
+				'<a href="' . esc_url( __( 'https://wordpress.org', 'eee23-theme' ) ) . '" rel="nofollow">WordPress</a>'
 			)
 				?>
 		</p>
