@@ -55,9 +55,7 @@ export default function save({ attributes }) {
                     )}
                 </div>
             )}
-            <div className="wp-block-eee23-blocks-stage-homepage__content">
-                <div {...innerBlockProps}></div>
-            </div>
+            <div {...innerBlockProps}></div>
         </div>
     );
 }
