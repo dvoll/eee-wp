@@ -1,0 +1,71 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "eee23-blocks/stage-homepage",
+  "version": "0.1.0",
+  "title": "Bühne (Homepage)",
+  "category": "media",
+  "icon": "format-image",
+  "description": "Bühne für die Homepage",
+  "supports": {
+    "html": false,
+    "color": {
+      "text": false,
+      "background": true,
+      "link": false
+    },
+    "filter": {
+      "duotone": true
+    }
+  },
+  "selectors": {
+    "filter": {
+      "duotone": ".wp-block-eee23-blocks-stage-homepage img, .wp-block-eee23-blocks-stage-homepage video"
+    }
+  },
+  "textdomain": "stage-homepage",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "linkUrl": {
+      "type": "string"
+    },
+    "mediaId": {
+      "type": "number"
+    },
+    "mediaSrc": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "video,img",
+      "attribute": "src"
+    },
+    "mediaMime": {
+      "type": "string"
+    },
+    "mediaPoster": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "video",
+      "attribute": "poster"
+    },
+    "focalPointValueX": {
+      "type": "number"
+    },
+    "focalPointValueY": {
+      "type": "number"
+    },
+    "style": {
+      "type": "object",
+      "default": {
+        "color": {
+          "background": "var(--wp--preset--color--image-overlay)",
+          "duotone": [
+            "#7E998A",
+            "#BECCC4"
+          ]
+        }
+      }
+    }
+  }
+}
