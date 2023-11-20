@@ -6,22 +6,22 @@
  * Block Types: core/template-part/footer
  */
 ?>
-<!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group">
+<!-- wp:group {"style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}},"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50"}}},"backgroundColor":"secondary","textColor":"white","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-white-color has-secondary-background-color has-text-color has-background has-link-color"
+	style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)">
 	<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|40"}}},"layout":{"type":"flex","justifyContent":"space-between"}} -->
 	<div class="wp-block-group alignwide" style="padding-top:var(--wp--preset--spacing--40)">
 		<!-- wp:site-title {"level":0} /-->
-		<!-- wp:paragraph {"align":"right"} -->
-		<p class="has-text-align-right">
-			<?php
-			printf(
-				/* Translators: WordPress link. */
-				esc_html__( 'Proudly powered by %s', 'eee23-theme' ),
-				'<a href="' . esc_url( __( 'https://wordpress.org', 'eee23-theme' ) ) . '" rel="nofollow">WordPress</a>'
-			)
-				?>
-		</p>
+
+		<!-- wp:paragraph -->
+		<p></p>
 		<!-- /wp:paragraph -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|40"}}},"layout":{"type":"flex","justifyContent":"right"}} -->
+	<div class="wp-block-group alignwide" style="padding-top:var(--wp--preset--spacing--40)">
+		<!-- wp:navigation {"layout":{"type":"flex","justifyContent":"right"}} /-->
 	</div>
 	<!-- /wp:group -->
 </div>
