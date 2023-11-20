@@ -21,6 +21,7 @@ services:
     volumes:
       - wordpress:/var/www/html
       - ./plugins/eee23-blocks:/var/www/html/wp-content/plugins/eee23-blocks
+      - ./plugins/eee23-mail-config:/var/www/html/wp-content/plugins/eee23-mail-config
       - ./themes/eee-theme:/var/www/html/wp-content/themes/eee-theme
     ports:
       - "8086:80"
@@ -31,6 +32,21 @@ services:
       WORDPRESS_DB_NAME: wp
       WORDPRESS_DEBUG: 1
       WORDPRESS_CONFIG_EXTRA: |
+        /* development parameters */
+        define('WP_CACHE', false);
+        define('WP_ENVIRONMENT_TYPE', 'development');
+        define('WP_DEBUG_LOG', true);
+
+        /* Mail config */
+        define('EEE_SMTP_FROM', 'wordpress@localhost.test');
+        define('EEE_SMTP_FROM_NAME', 'local wordpress');
+        define('EEE_SMTP_HOST', 'mailhog');
+        define('EEE_SMTP_PORT', 1025);
+        define('EEE_SMTP_USER', '');
+        define('EEE_SMTP_PASS', '');
+        define('EEE_SMTP_ENCRYPTION', '');
+        define('EEE_FORM_RECIPIENT', 'kontaktformular@localhost.test');
+
         /* JS Script debug */
         define('SCRIPT_DEBUG', true );
     restart: always
@@ -51,6 +67,11 @@ services:
       HOME: /tmp
     # command: tail -f /dev/null
     command: wp
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - 8025:8025
+      - 1025:1025
 volumes:
   db_data: {}
   wordpress:

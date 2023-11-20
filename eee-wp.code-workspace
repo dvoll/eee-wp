@@ -7,16 +7,17 @@
 			"path": "plugins/eee23-blocks"
 		},
 		{
+			"path": "plugins/eee23-mail-config"
+		},
+		{
 			"path": ".",
 			"name": "root",
 		}
 	],
 	"settings": {
 		"files.exclude": {
-			"themes/eee-theme": true,
-			"wp-content/themes/eee-theme": true,
-			"plugins/eee23-blocks": true,
-			"wp-content/plugins/eee23-blocks": true,
+			"themes": true,
+			"plugins": true,
 		},
 		"search.exclude": {
 			"**/node_modules": true,
