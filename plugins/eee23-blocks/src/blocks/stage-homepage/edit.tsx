@@ -44,20 +44,12 @@ const Edit = ({
     const { mediaId, mediaSrc, mediaMime, mediaPoster, focalPointValueX, focalPointValueY, style }: BlockAttributes =
         attributes;
 
-    console.log('style', attributes);
-
     const BLOCKS_TEMPLATE = [
         [
             'core/heading',
             {
                 level: 1,
                 placeholder: 'Titel der Seite',
-                style: {
-                    // typography: {
-                    //     fontSize: 'clamp(1.75rem, calc(1.75rem + ((1vw - 0.2rem) * 2.059)), 2.625rem)',
-                    //     lineHeight: 1.1,
-                    // },
-                },
             },
         ] as Template,
         [

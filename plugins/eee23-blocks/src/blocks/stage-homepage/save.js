@@ -11,9 +11,10 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
  * @return {import("@wordpress/element").WPElement} Element to render.
  */
 export default function save({ attributes }) {
-    const { mediaSrc, mediaMime, mediaPoster, focalPointValueX, focalPointValueY } = attributes;
+    const { mediaSrc, mediaMime, mediaPoster, focalPointValueX, focalPointValueY, style } = attributes;
 
     const blockProps = useBlockProps.save({
+        style: { background: 'transparent' },
         className: ['alignfull'].join(' '),
     });
 
@@ -28,7 +29,10 @@ export default function save({ attributes }) {
     return (
         <div {...blockProps}>
             {mediaSrc && (
-                <div className="wp-block-eee23-blocks-stage-homepage__media-container">
+                <div
+                    className="wp-block-eee23-blocks-stage-homepage__media-container"
+                    style={{ '--stage-background-color': style.color.background }}
+                >
                     {mediaSrc && mediaMime === 'image' && (
                         <img
                             className="wp-block-eee23-blocks-stage-homepage__media wp-block-eee23-blocks-stage-homepage__image"
