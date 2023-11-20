@@ -390,7 +390,7 @@
 			},
 			"core/details": {
 				"border": {
-					"top": {
+					"bottom": {
 						"color": "var(--wp--preset--color--contrast)",
 						"style": "solid",
 						"width": "1px"
