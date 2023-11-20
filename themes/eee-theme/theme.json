@@ -524,9 +524,7 @@
 		"spacing": {
 			"blockGap": "1.5rem",
 			"padding": {
-				"topCOMMMENT": "var(--wp--preset--spacing--40)",
 				"right": "1.5rem",
-				"bottom": "var(--wp--preset--spacing--40)",
 				"left": "1.5rem"
 			}
 		},
