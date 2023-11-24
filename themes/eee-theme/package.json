@@ -1,0 +1,16 @@
+{
+  "name": "eee-theme",
+  "version": "1.0.0",
+  "description": "=== EEE 2023 Theme === Contributors: Dario Voll Requires at least: 6.3 Tested up to: 6.3 Requires PHP: 8.1 Stable tag: 1.2 License: GPLv2 or later License URI: http://www.gnu.org/licenses/gpl-2.0.html",
+  "main": "resources/index.js",
+  "scripts": {
+    "start": "wp-scripts start --webpack-src-dir=resources --output-path=public",
+    "build": "wp-scripts build --webpack-src-dir=resources --output-path=public"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^18.2.38",
+    "@wordpress/scripts": "^26.17.0"
+  }
+}

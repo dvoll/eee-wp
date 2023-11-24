@@ -111,3 +111,28 @@ header {
 	}
 }
 
+.eee-icon a {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+
+    &:hover .eee-svg-icon {
+        transform: translate(0.25em);
+    }
+}
+
+.eee-icon--before a {
+    flex-direction: row-reverse;
+    gap: .75rem;
+
+    &:hover .eee-svg-icon {
+        transform: translate(0.125em);
+    }
+}
+
+.eee-svg-icon {
+    width: 1em; 
+    height: 1em; 
+    fill: currentColor;
+    transition: transform .25s ease-in-out;
+}
