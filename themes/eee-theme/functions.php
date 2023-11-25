@@ -99,3 +99,8 @@ function eee_theme_23_include_svg_icons(): void {
 	}
 }
 add_action( 'wp_footer', 'eee_theme_23_include_svg_icons', 9999 );
+
+function eee_theme_23_hkdev_user_can( $capability ): string {
+	return "edit_posts";
+}
+add_filter( "hkdev_user_can", "eee_theme_23_hkdev_user_can" );
