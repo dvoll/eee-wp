@@ -10,7 +10,8 @@ module.exports = {
     ...{
         entry: {
             'js/view': path.resolve(process.cwd(), 'resources', 'view.js'),
-            // 'js/editor': path.resolve(process.cwd(), 'resources', 'editor.js'),
+            'js/editor': path.resolve(process.cwd(), 'resources', 'editor.js'),
+            'css/block-styles': path.resolve(process.cwd(), 'resources', 'styles/block-styles.scss'),
         },
     },
 };

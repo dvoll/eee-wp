@@ -1,5 +1,5 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) {
+if(!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // add_action( 'after_setup_theme', 'eee_theme_23_support' );
 
-if ( ! function_exists( 'eee_theme_23_styles' ) ) :
+if(!function_exists('eee_theme_23_styles')):
 
 	/**
 	 * Enqueue styles.
@@ -40,67 +40,79 @@ if ( ! function_exists( 'eee_theme_23_styles' ) ) :
 	 */
 	function eee_theme_23_styles() {
 		// Register theme stylesheet.
-		$theme_version = wp_get_theme()->get( 'Version' );
+		$theme_version = wp_get_theme()->get('Version');
 
 		// @phpstan-ignore-next-line
-		$version_string = is_string( $theme_version ) ? $theme_version : false;
+		$version_string = is_string($theme_version) ? $theme_version : false;
 		wp_register_style(
 			'eee_theme_23-style',
-			get_template_directory_uri() . '/style.css',
+			get_template_directory_uri().'/style.css',
 			array(),
 			$version_string
 		);
 
 		// Enqueue theme stylesheet.
-		wp_enqueue_style( 'eee_theme_23-style' );
+		wp_enqueue_style('eee_theme_23-style');
 
-		$script_asset = include get_parent_theme_file_path( 'public/js/view.asset.php' );
+		$script_asset = include get_parent_theme_file_path('public/js/view.asset.php');
 		// Add view.js script
 		wp_register_script(
 			'eee_theme_23-script',
-			get_parent_theme_file_uri( 'public/js/view.js' ),
+			get_parent_theme_file_uri('public/js/view.js'),
 			$script_asset['dependencies'],
 			$script_asset['version'],
 			true // add to footer
 		);
-		wp_enqueue_script( 'eee_theme_23-script' );
+		wp_enqueue_script('eee_theme_23-script');
 
 	}
 
 endif;
 
-add_action( 'wp_enqueue_scripts', 'eee_theme_23_styles' );
+add_action('wp_enqueue_scripts', 'eee_theme_23_styles');
 
-// function eee_theme_23_add_editor_script(): void {
-// 	$script_asset = include get_parent_theme_file_path( 'public/js/editor.asset.php' );
+function eee_theme_23_add_editor_script(): void {
+	$script_asset = include get_parent_theme_file_path('public/js/editor.asset.php');
 
-// 	wp_enqueue_script(
-// 		'eee-theme-23-editor',
-// 		get_parent_theme_file_uri( 'public/js/editor.js' ),
-// 		$script_asset['dependencies'],
-// 		$script_asset['version'],
-// 		true
-// 	);
-// }
-// add_action( 'enqueue_block_editor_assets', 'eee_theme_23_add_editor_script' );
+	wp_enqueue_script(
+		'eee-theme-23-editor',
+		get_parent_theme_file_uri('public/js/editor.js'),
+		$script_asset['dependencies'],
+		$script_asset['version'],
+		true
+	);
+}
+add_action('enqueue_block_editor_assets', 'eee_theme_23_add_editor_script');
+
+function eee_theme_23_block_styles(): void {
+	$style_asset = include get_parent_theme_file_path('public/css/block-styles.asset.php');
+
+	wp_register_style(
+		'eee_theme_23-block-styles',
+		get_parent_theme_file_uri('public/css/block-styles.css'),
+		$style_asset['dependencies'],
+		$style_asset['version'],
+	);
+
+	wp_enqueue_style('eee_theme_23-block-styles');
+}
+add_action('enqueue_block_assets', 'eee_theme_23_block_styles');
 
 
 function eee_theme_23_include_svg_icons(): void {
 	// Define SVG sprite file.
-	$svg_icons = get_parent_theme_file_path( '/assets/icons/svg-sprite.html' );
-	$svg_template = get_parent_theme_file_path( '/assets/icons/svg-template.html' );
-
-	error_log( file_exists( $svg_icons ) ? 'true' : 'no' );
+	$svg_icons = get_parent_theme_file_path('/assets/icons/svg-sprite.html');
+	$svg_template = get_parent_theme_file_path('/assets/icons/svg-template.html');
 
 	// If it exists, include it.
-	if ( file_exists( $svg_icons ) && file_exists( $svg_template ) ) {
-		require_once( $svg_icons );
-		require_once( $svg_template );
+	if(file_exists($svg_icons) && file_exists($svg_template)) {
+		require_once($svg_icons);
+		require_once($svg_template);
 	}
 }
-add_action( 'wp_footer', 'eee_theme_23_include_svg_icons', 9999 );
+add_action('wp_footer', 'eee_theme_23_include_svg_icons', 9999);
 
-function eee_theme_23_hkdev_user_can( $capability ): string {
+function eee_theme_23_hkdev_user_can(mixed $capability): string {
 	return "edit_posts";
 }
-add_filter( "hkdev_user_can", "eee_theme_23_hkdev_user_can" );
+add_filter("hkdev_user_can", "eee_theme_23_hkdev_user_can");
