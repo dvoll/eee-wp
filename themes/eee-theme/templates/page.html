@@ -4,7 +4,7 @@
 <main class="wp-block-group" style="margin-top:var(--wp--preset--spacing--50)">
 	<!-- wp:group {"layout":{"type":"constrained"}} -->
 	<div class="wp-block-group">
-		<!-- wp:post-featured-image {"overlayColor":"contrast","dimRatio":50,"align":"wide","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|50","top":"calc(-1 * var(--wp--preset--spacing--50))"}}}} /-->
+		<!-- wp:post-featured-image {"align":"wide","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|50","top":"calc(-1 * var(--wp--preset--spacing--50))"}}}} /-->
 		<!-- wp:post-title {"level":1,"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} /-->
 	</div>
 	<!-- /wp:group -->
@@ -14,3 +14,55 @@
 <!-- /wp:group -->
 
 <!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
+
+<div class="dev-grid">
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</div>
+
+<style>
+	.dev-grid {
+		position: fixed;
+		top: 0;
+		left: 50%;
+		width: 100%;
+		max-width: 1264px;
+		height: 100vh;
+		transform: translateX(-50%);
+		display: none;
+		flex-direction: row;
+		column-gap: 1.5rem;
+		justify-content: stretch;
+		align-items: stretch;
+		pointer-events: none;
+		padding-inline: 2rem;
+		box-sizing: border-box;
+
+		&:where(.dev-grid--visible) {
+			display: flex;
+		}
+
+		>* {
+			background-color: rgba(200 200 200/12%);
+			flex-grow: 1;
+		}
+	}
+</style>
+
+<script>
+	document.addEventListener('keydown', (event) => {
+		if (event.ctrlKey && event.altKey && event.key === 'g') {
+			document.querySelector('.dev-grid').classList.toggle('dev-grid--visible');
+		}
+	})
+</script>
