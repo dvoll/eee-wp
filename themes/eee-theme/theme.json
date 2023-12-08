@@ -395,12 +395,6 @@
 						"style": "solid",
 						"width": "1px"
 					}
-				},
-				"spacing": {
-					"padding": {
-						"top": ".5rem",
-						"bottom": ".5rem"
-					}
 				}
 			}
 		},

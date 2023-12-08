@@ -1,3 +1,5 @@
+import Accordion from './scripts/accordion';
+
 /** @type {number} lastScrollPosition */
 let lastScrollPosition = 0;
 /** @type {number} newScrollPosition */
@@ -14,18 +16,22 @@ function doSomething(scrollPos) {
     lastScrollPosition = scrollPos;
 }
 
-document.addEventListener('scroll', (event) => {
-    newScrollPosition = window.scrollY;
+document.addEventListener(
+    'scroll',
+    () => {
+        newScrollPosition = window.scrollY;
 
-    if (!ticking) {
-        window.requestAnimationFrame(() => {
-            doSomething(newScrollPosition);
-            ticking = false;
-        });
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                doSomething(newScrollPosition);
+                ticking = false;
+            });
 
-        ticking = true;
-    }
-});
+            ticking = true;
+        }
+    },
+    { passive: true }
+);
 
 document.addEventListener('DOMContentLoaded', () => {
     /** @type { HTMLTemplateElement | null } */
@@ -41,5 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         use.setAttribute('href', '#' + iconName);
         paragraph.querySelectorAll('a').forEach((link) => link.append(templateClone));
+    });
+
+    requestAnimationFrame(() => {
+        document.querySelectorAll('.wp-block-details').forEach((el) => {
+            new Accordion(/** @type {HTMLDetailsElement} */ (el));
+        });
     });
 });
