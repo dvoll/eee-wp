@@ -45,8 +45,6 @@ export default function Edit({ attributes, setAttributes, clientId }: any) {
     const { startCol, colSpan, startColTablet, colSpanTablet, startColDesktop, colSpanDesktop, verticalAlignment } =
         attributes;
 
-    console.log('attributes col edit', attributes);
-
     const blockProps = useBlockProps({
         className: verticalAlignment ? `is-vertically-aligned-${verticalAlignment}` : '',
     });
