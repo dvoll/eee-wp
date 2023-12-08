@@ -33,6 +33,14 @@
         min-height: 100%;
         max-height: 720px;
 
+        @media screen and (max-width: 1079px) {
+            max-width: auto;
+        }
+
+        @media screen and (max-width: 779px) {
+            height: 60vh;
+        }
+
         &::after {
             content: '';
             position: absolute;
