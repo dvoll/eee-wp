@@ -1,6 +1,14 @@
 import { InspectorControls, MediaUpload, useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 import { Template } from '@wordpress/blocks';
-import { Button, Disabled, FocalPointPicker, PanelBody } from '@wordpress/components';
+import {
+    BaseControl,
+    Button,
+    Disabled,
+    ExternalLink,
+    FocalPointPicker,
+    PanelBody,
+    TextareaControl,
+} from '@wordpress/components';
 import React, { useCallback, useEffect, useRef } from 'react';
 import { __ } from '@wordpress/i18n';
 
@@ -17,6 +25,7 @@ export interface BlockAttributes {
     mediaSrc?: string;
     mediaMime?: string;
     mediaPoster?: string;
+    mediaAlt?: string;
     focalPointValueX: number;
     focalPointValueY: number;
     style: any;
@@ -41,8 +50,16 @@ const Edit = ({
     className: string;
 }): JSX.Element => {
     // Attributes
-    const { mediaId, mediaSrc, mediaMime, mediaPoster, focalPointValueX, focalPointValueY, style }: BlockAttributes =
-        attributes;
+    const {
+        mediaId,
+        mediaSrc,
+        mediaMime,
+        mediaPoster,
+        mediaAlt,
+        focalPointValueX,
+        focalPointValueY,
+        style,
+    }: BlockAttributes = attributes;
 
     const BLOCKS_TEMPLATE = [
         [
@@ -69,6 +86,60 @@ const Edit = ({
     const onFocalPointChange = useCallback(
         (value: { x: number; y: number }) => {
             setAttributes({ focalPointValueX: value.x ?? 0.5, focalPointValueY: value.y ?? 0.5 });
+        },
+        [setAttributes]
+    );
+
+    const onMediaUpload = useCallback(
+        (
+            media: {
+                id: number;
+            } & {
+                [k: string]: any;
+            }
+        ) => {
+            if (!media || !media.url) {
+                // In this case there was an error previous attributes should be removed because they may be temporary blob urls.
+                setAttributes({
+                    mediaMime: undefined,
+                    mediaSrc: undefined,
+                    mediaId: undefined,
+                    mediaPoster: undefined,
+                    mediaAlt: undefined,
+                    focalPointValueX: undefined,
+                    focalPointValueY: undefined,
+                });
+                return;
+            }
+
+            if (media.mime === 'video/mp4') {
+                setAttributes({
+                    mediaMime: 'video/mp4',
+                    mediaSrc: media.url,
+                    mediaId: media.id,
+                    mediaPoster: media.image?.src !== media.icon ? media.image?.src : undefined,
+                    mediaAlt: undefined,
+                    focalPointValueX: undefined,
+                    focalPointValueY: undefined,
+                });
+                return;
+            }
+            setAttributes({
+                mediaMime: 'image',
+                mediaSrc: media.sizes.large?.url ?? media.url,
+                mediaId: media.id,
+                mediaPoster: undefined,
+                mediaAlt: media.alt ?? '',
+                focalPointValueX: undefined,
+                focalPointValueY: undefined,
+            });
+        },
+        [setAttributes]
+    );
+
+    const onMediaAltChange = useCallback(
+        (value: string) => {
+            setAttributes({ mediaAlt: value });
         },
         [setAttributes]
     );
@@ -114,49 +185,35 @@ const Edit = ({
                             }}
                         />
                     ) : null}
-                    <MediaUpload
-                        onSelect={(media) => {
-                            if (!media || !media.url) {
-                                // In this case there was an error previous attributes should be removed because they may be temporary blob urls.
-                                setAttributes({
-                                    mediaMime: undefined,
-                                    mediaSrc: undefined,
-                                    mediaId: undefined,
-                                    mediaPoster: undefined,
-                                    focalPointValueX: undefined,
-                                    focalPointValueY: undefined,
-                                });
-                                return;
+                    <BaseControl>
+                        <MediaUpload
+                            onSelect={onMediaUpload}
+                            allowedTypes={['video/mp4', 'image']}
+                            value={mediaId}
+                            render={({ open }) => (
+                                <Button variant="primary" onClick={open}>
+                                    {!mediaId ? 'Bild/Video auswählen' : 'Bild/Video ändern'}
+                                </Button>
+                            )}
+                        />
+                    </BaseControl>
+                    {mediaMime === 'image' && (
+                        <TextareaControl
+                            label={__('Alternative text')}
+                            value={mediaAlt ?? ''}
+                            onChange={onMediaAltChange}
+                            help={
+                                <>
+                                    <ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
+                                        {__('Describe the purpose of the image.')}
+                                    </ExternalLink>
+                                    <br />
+                                    {__('Leave empty if decorative.')}
+                                </>
                             }
-
-                            if (media.mime === 'video/mp4') {
-                                setAttributes({
-                                    mediaMime: 'video/mp4',
-                                    mediaSrc: media.url,
-                                    mediaId: media.id,
-                                    mediaPoster: media.image?.src !== media.icon ? media.image?.src : undefined,
-                                    focalPointValueX: undefined,
-                                    focalPointValueY: undefined,
-                                });
-                                return;
-                            }
-                            setAttributes({
-                                mediaMime: 'image',
-                                mediaSrc: media.sizes.large?.url ?? media.url,
-                                mediaId: media.id,
-                                mediaPoster: undefined,
-                                focalPointValueX: undefined,
-                                focalPointValueY: undefined,
-                            });
-                        }}
-                        allowedTypes={['video/mp4', 'image']}
-                        value={mediaId}
-                        render={({ open }) => (
-                            <Button variant="primary" onClick={open}>
-                                {!mediaId ? 'Bild/Video auswählen' : 'Bild/Video ändern'}
-                            </Button>
-                        )}
-                    />
+                            __nextHasNoMarginBottom
+                        />
+                    )}
                 </PanelBody>
             </InspectorControls>
             <div {...blockProps}>
@@ -174,7 +231,7 @@ const Edit = ({
                         />
                     )}
                     {mediaSrc && mediaMime === 'video/mp4' && (
-                        <Disabled>
+                        <Disabled style={{ height: '100%' }}>
                             <video
                                 className="wp-block-eee23-blocks-stage-homepage__media"
                                 src={mediaSrc}

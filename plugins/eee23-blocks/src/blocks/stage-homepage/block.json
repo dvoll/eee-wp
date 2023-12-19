@@ -43,6 +43,14 @@
 		"mediaMime": {
 			"type": "string"
 		},
+		"mediaAlt": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "alt",
+			"default": "",
+			"__experimentalRole": "content"
+		},
 		"mediaPoster": {
 			"type": "string",
 			"source": "attribute",

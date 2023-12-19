@@ -8,10 +8,18 @@ import {
     __experimentalLinkControl as LinkControl,
 } from '@wordpress/block-editor';
 import { Template } from '@wordpress/blocks';
-import { Button, FocalPointPicker, PanelBody, Popover, ToolbarButton } from '@wordpress/components';
+import {
+    BaseControl,
+    Button,
+    ExternalLink,
+    FocalPointPicker,
+    PanelBody,
+    Popover,
+    TextareaControl,
+    ToolbarButton,
+} from '@wordpress/components';
 import { link, linkOff } from '@wordpress/icons';
-import { useCallback } from 'react';
-import { useState, useEffect, useRef } from 'react';
+import { useCallback, useState, useEffect, useRef } from 'react';
 import { ArrowIcon } from './icons';
 import { __ } from '@wordpress/i18n';
 
@@ -26,6 +34,7 @@ import './editor.scss';
 export interface BlockAttributes {
     imageId?: number;
     imageUrl?: string;
+    alt?: string;
     focalPointValueX: number;
     focalPointValueY: number;
     linkUrl: string;
@@ -37,10 +46,18 @@ export interface BlockAttributes {
 const NEW_TAB_REL = 'noreferrer noopener';
 
 const Edit = ({ attributes, setAttributes, isSelected }: any) => {
-    const moduleRef = useRef();
+    const moduleRef = useRef<HTMLDivElement>();
 
-    const { imageId, imageUrl, focalPointValueX, focalPointValueY, linkUrl, linkTarget, linkRel }: BlockAttributes =
-        attributes;
+    const {
+        imageId,
+        imageUrl,
+        alt,
+        focalPointValueX,
+        focalPointValueY,
+        linkUrl,
+        linkTarget,
+        linkRel,
+    }: BlockAttributes = attributes;
 
     const BLOCKS_TEMPLATE = [
         [
@@ -74,6 +91,32 @@ const Edit = ({ attributes, setAttributes, isSelected }: any) => {
     const onFocalPointChange = useCallback(
         (value: { x: number; y: number }) => {
             setAttributes({ focalPointValueX: value.x ?? 0.5, focalPointValueY: value.y ?? 0.5 });
+        },
+        [setAttributes]
+    );
+
+    const onImageSelect = useCallback(
+        (
+            img: {
+                id: number;
+            } & {
+                [k: string]: any;
+            }
+        ) => {
+            const url = img.sizes.large?.url ?? img.url;
+
+            setAttributes({
+                imageId: img.id,
+                imageUrl: url,
+                alt: img.alt ?? '',
+            });
+        },
+        [setAttributes]
+    );
+
+    const onImageAltChange = useCallback(
+        (value: string) => {
+            setAttributes({ alt: value });
         },
         [setAttributes]
     );
@@ -142,32 +185,39 @@ const Edit = ({ attributes, setAttributes, isSelected }: any) => {
                             }}
                         />
                     )}
-                    <MediaUpload
-                        onSelect={(img) => {
-                            const url = img.sizes.large?.url ?? img.url;
-
-                            setAttributes({
-                                imageId: img.id,
-                                imageUrl: url,
-                            });
-                        }}
-                        allowedTypes={['image']}
-                        value={imageId}
-                        render={({ open }) => (
-                            <Button variant="primary" onClick={open}>
-                                {!imageId ? 'Bild auswählen' : 'Bild ändern'}
-                            </Button>
-                        )}
+                    <BaseControl>
+                        <MediaUpload
+                            onSelect={onImageSelect}
+                            allowedTypes={['image']}
+                            value={imageId}
+                            render={({ open }) => (
+                                <Button variant="primary" onClick={open}>
+                                    {!imageId ? 'Bild auswählen' : 'Bild ändern'}
+                                </Button>
+                            )}
+                        />
+                    </BaseControl>
+                    <TextareaControl
+                        label={__('Alternative text')}
+                        value={alt ?? ''}
+                        onChange={onImageAltChange}
+                        help={
+                            <>
+                                <ExternalLink href="https://www.w3.org/WAI/tutorials/images/decision-tree">
+                                    {__('Describe the purpose of the image.')}
+                                </ExternalLink>
+                                <br />
+                                {__('Leave empty if decorative.')}
+                            </>
+                        }
+                        __nextHasNoMarginBottom
                     />
                 </PanelBody>
             </InspectorControls>
-            {/* <BlockControls>
-                <AlignmentToolbar value={'wide'} onChange={() => console.log('LOG')} />
-            </BlockControls> */}
             <BlockControls group="block">
                 {!isURLSet && (
                     <ToolbarButton
-                        name="link"
+                        label="Verlinkung"
                         icon={<BlockIcon icon={link} />}
                         title={__('Link')}
                         // shortcut={ displayShortcut.primary( 'k' ) }
@@ -176,7 +226,7 @@ const Edit = ({ attributes, setAttributes, isSelected }: any) => {
                 )}
                 {isURLSet && (
                     <ToolbarButton
-                        name="link"
+                        label="Verlinkung"
                         icon={<BlockIcon icon={linkOff} />}
                         title={__('Unlink')}
                         // shortcut={ displayShortcut.primaryShift( 'k' ) }
@@ -190,11 +240,10 @@ const Edit = ({ attributes, setAttributes, isSelected }: any) => {
                     position="bottom center"
                     onClose={() => {
                         setIsEditingURL(false);
-                        // richTextRef.current?.focus();
+                        moduleRef.current?.focus();
                     }}
-                    anchorRef={moduleRef.current}
+                    anchor={moduleRef.current}
                     focusOnMount={isEditingURL ? 'firstElement' : false}
-                    // __unstableSlotName={ '__unstable-block-tools-after' }
                 >
                     <LinkControl
                         className="wp-block-navigation-link__inline-link-input"

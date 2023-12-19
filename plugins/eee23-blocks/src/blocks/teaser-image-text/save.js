@@ -11,7 +11,7 @@ import { ArrowIcon } from './icons';
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
  */
 export default function save({ attributes }) {
-    const { linkUrl, linkTarget, imageUrl, focalPointValueX, focalPointValueY } = attributes;
+    const { linkUrl, linkTarget, imageUrl, alt, focalPointValueX, focalPointValueY } = attributes;
 
     const blockProps = useBlockProps.save({
         className: ['eee23-blocks-teaser-image-text', linkUrl !== undefined ? 'eee-has-link' : undefined].join(' '),
@@ -27,7 +27,7 @@ export default function save({ attributes }) {
                 <div className="wp-block-eee23-blocks-teaser-image-text__image-container">
                     <img
                         className="wp-block-eee23-blocks-teaser-image-text__image"
-                        alt=""
+                        alt={alt ?? ''}
                         src={imageUrl}
                         style={{ objectPosition: mediaPosition({ x: focalPointValueX, y: focalPointValueY }) }}
                     />

@@ -11,7 +11,7 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
  * @return {import("@wordpress/element").WPElement} Element to render.
  */
 export default function save({ attributes }) {
-    const { mediaSrc, mediaMime, mediaPoster, focalPointValueX, focalPointValueY, style } = attributes;
+    const { mediaSrc, mediaMime, mediaPoster, mediaAlt, focalPointValueX, focalPointValueY, style } = attributes;
 
     const blockProps = useBlockProps.save({
         style: { background: 'transparent' },
@@ -36,7 +36,7 @@ export default function save({ attributes }) {
                     {mediaSrc && mediaMime === 'image' && (
                         <img
                             className="wp-block-eee23-blocks-stage-homepage__media wp-block-eee23-blocks-stage-homepage__image"
-                            alt=""
+                            alt={mediaAlt ?? ''}
                             src={mediaSrc}
                             style={{ objectPosition: mediaPosition({ x: focalPointValueX, y: focalPointValueY }) }}
                         />
