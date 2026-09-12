@@ -107,7 +107,15 @@ npm run start:theme
 
 ### Code Quality & Static Analysis
 ```bash
-# Run PHPStan (level 6) via Docker
+# Run WordPress Coding Standards (PHPCS) via Docker
+npm run lint:php
+# or via composer:
+docker compose run --rm composer run phpcs
+
+# Auto-fix PHP code standards violations (PHPCBF)
+npm run format:php
+
+# Run PHPStan (level 6 with deprecation rules) via Docker
 docker compose run --rm composer run phpstan
 # or:
 npm run check:php
@@ -118,7 +126,7 @@ npm run lint:blocks
 # Auto-format block source code
 npm run format:blocks
 
-# Run all quality checks
+# Run all quality checks (JS/CSS lint, PHPCS, PHPStan)
 npm run check
 ```
 

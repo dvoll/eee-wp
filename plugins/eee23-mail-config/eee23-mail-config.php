@@ -22,12 +22,14 @@ add_action( 'phpmailer_init', function (\PHPMailer\PHPMailer\PHPMailer $php_mail
 		defined( 'EEE_SMTP_PASS' )
 	) {
 		$php_mailer->IsSMTP();
+		// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- PHPMailer uses PascalCase properties
 		$php_mailer->Host = EEE_SMTP_HOST;
-		$php_mailer->Port = EEE_SMTP_PORT;
+		$php_mailer->Port = (int) EEE_SMTP_PORT;
 		$php_mailer->SMTPSecure = EEE_SMTP_ENCRYPTION;
 		$php_mailer->SMTPAuth = true;
 		$php_mailer->Username = EEE_SMTP_USER;
 		$php_mailer->Password = EEE_SMTP_PASS;
+		// phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 	}
 }, 10 );
 
@@ -35,18 +37,18 @@ add_action( 'init', function () {
 	if (
 		defined( 'EEE_SMTP_FROM' )
 	) {
-		add_filter( 'wp_mail_from', fn( $email ) => EEE_SMTP_FROM );
+		add_filter( 'wp_mail_from', fn( $email ) => sanitize_email( (string) EEE_SMTP_FROM ) );
 	}
 	if (
 		defined( 'EEE_SMTP_FROM_NAME' )
 	) {
-		add_filter( 'wp_mail_from_name', fn( $name ) => EEE_SMTP_FROM_NAME );
+		add_filter( 'wp_mail_from_name', fn( $name ) => sanitize_text_field( (string) EEE_SMTP_FROM_NAME ) );
 	}
 } );
 
 add_filter( 'form_block_recipients', function ($recipients) {
 	if ( defined( 'EEE_FORM_RECIPIENT' ) ) {
-		return [ EEE_FORM_RECIPIENT ];
+		return [ sanitize_email( (string) EEE_FORM_RECIPIENT ) ];
 	}
 	return [ 'kontakt@wordpress.local' ];
 }, 10, 1 );

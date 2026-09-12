@@ -16,6 +16,8 @@ See [GEMINI.md](file:///home/dvoll/code/eee-wp/GEMINI.md) for full project archi
 | Build Blocks | `npm run build:blocks` |
 | Build Theme | `npm run build:theme` |
 | Lint Blocks | `npm run lint:blocks` |
+| Lint PHP (WPCS) | `npm run lint:php` |
+| Auto-format PHP (PHPCBF) | `npm run format:php` |
 | Run PHPStan (Level 6) | `npm run check:php` |
 | Run All Checks | `npm run check` |
 

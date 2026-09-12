@@ -8,3 +8,4 @@ parameters:
         - '*/vendor/*'
 includes:
     - vendor/szepeviktor/phpstan-wordpress/extension.neon
+    - vendor/phpstan/phpstan-deprecation-rules/rules.neon

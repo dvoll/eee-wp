@@ -15,7 +15,9 @@
     "format": "npm run format:blocks && npm run format:theme",
     "format:blocks": "npm --prefix plugins/eee23-blocks run format",
     "format:theme": "npm --prefix themes/eee-theme run format",
+    "format:php": "docker compose run --rm composer run phpcbf",
+    "lint:php": "docker compose run --rm composer run phpcs",
     "check:php": "docker compose run --rm composer run phpstan",
-    "check": "npm run lint && npm run check:php"
+    "check": "npm run lint && npm run lint:php && npm run check:php"
   }
 }
