@@ -1,5 +1,5 @@
 import { InspectorControls, MediaUpload, useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
-import { Template } from '@wordpress/blocks';
+import type { Template } from '@wordpress/blocks';
 import {
     BaseControl,
     Button,
@@ -35,8 +35,14 @@ export interface BlockAttributes {
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
  *
- * @param {{attributes: BlockAttributes, setAttributes: (param: any) => void, isSelected: boolean, style: object}} root0
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
+ *
+ * @param {Object}          props               Component props.
+ * @param {BlockAttributes} props.attributes    Block attributes.
+ * @param {Function}        props.setAttributes Function to set attributes.
+ * @param {boolean}         props.isSelected    Whether block is selected.
+ * @param {string}          props.className     Block class name.
+ * @return {JSX.Element} Element to render.
  */
 const Edit = ({
     attributes,

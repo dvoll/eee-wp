@@ -22,6 +22,7 @@ import {
  */
 import './editor.scss';
 import { useSelect } from '@wordpress/data';
+// eslint-disable-next-line @wordpress/no-unsafe-wp-apis
 import { PanelBody, __experimentalNumberControl as NumberControl } from '@wordpress/components';
 import { useCallback } from 'react';
 
@@ -31,6 +32,10 @@ import { useCallback } from 'react';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  *
+ * @param {Object}   props               Component props.
+ * @param {Object}   props.attributes    Block attributes.
+ * @param {Function} props.setAttributes Function to set attributes.
+ * @param {string}   props.clientId      Block client ID.
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes, clientId }: any) {

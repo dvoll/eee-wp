@@ -5,9 +5,10 @@ import {
     InspectorControls,
     MediaUpload,
     useBlockProps,
+    // eslint-disable-next-line @wordpress/no-unsafe-wp-apis
     __experimentalLinkControl as LinkControl,
 } from '@wordpress/block-editor';
-import { Template } from '@wordpress/blocks';
+import type { Template } from '@wordpress/blocks';
 import {
     BaseControl,
     Button,
@@ -45,6 +46,18 @@ export interface BlockAttributes {
 
 const NEW_TAB_REL = 'noreferrer noopener';
 
+/**
+ * The edit function describes the structure of your block in the context of the
+ * editor. This represents what the editor will render when the block is used.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
+ *
+ * @param {Object}          props               Component props.
+ * @param {BlockAttributes} props.attributes    Block attributes.
+ * @param {Function}        props.setAttributes Function to set attributes.
+ * @param {boolean}         props.isSelected    Whether block is selected.
+ * @return {JSX.Element} Element to render.
+ */
 const Edit = ({ attributes, setAttributes, isSelected }: any) => {
     const moduleRef = useRef<HTMLDivElement>();
 

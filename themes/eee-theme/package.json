@@ -5,7 +5,12 @@
   "main": "resources/index.js",
   "scripts": {
     "start": "wp-scripts start --webpack-src-dir=resources --output-path=public",
-    "build": "wp-scripts build --webpack-src-dir=resources --output-path=public"
+    "build": "wp-scripts build --webpack-src-dir=resources --output-path=public",
+    "lint": "wp-scripts lint-js resources && wp-scripts lint-style 'resources/**/*.scss'",
+    "lint:js": "wp-scripts lint-js resources",
+    "lint:css": "wp-scripts lint-style 'resources/**/*.scss'",
+    "format": "wp-scripts format resources",
+    "wp-scripts": "wp-scripts"
   },
   "author": "",
   "license": "ISC",

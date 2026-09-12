@@ -9,9 +9,13 @@
     "build:theme": "npm --prefix themes/eee-theme run build",
     "start:blocks": "npm --prefix plugins/eee23-blocks run start",
     "start:theme": "npm --prefix themes/eee-theme run start",
-    "lint:blocks": "npm --prefix plugins/eee23-blocks run lint:js && npm --prefix plugins/eee23-blocks run lint:css",
+    "lint": "npm run lint:blocks && npm run lint:theme",
+    "lint:blocks": "npm --prefix plugins/eee23-blocks run lint",
+    "lint:theme": "npm --prefix themes/eee-theme run lint",
+    "format": "npm run format:blocks && npm run format:theme",
     "format:blocks": "npm --prefix plugins/eee23-blocks run format",
+    "format:theme": "npm --prefix themes/eee-theme run format",
     "check:php": "docker compose run --rm composer run phpstan",
-    "check": "npm run lint:blocks && npm run check:php"
+    "check": "npm run lint && npm run check:php"
   }
 }

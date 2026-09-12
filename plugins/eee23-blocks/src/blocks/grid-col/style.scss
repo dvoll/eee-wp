@@ -6,19 +6,19 @@
  */
 
 .wp-block-eee23-blocks-grid-col {
-    grid-column: var(--start-col, 1) / span var(--col-span, 12);
-    --start-col: var(--start-col-mobile);
-    --col-span: var(--col-span-mobile);
-        
-    @media screen and (min-width: 780px) {
-        --start-col: var(--start-col-tablet);
-        --col-span: var(--col-span-tablet);
-    }
-    
-    @media screen and (min-width: 1080px) {
-        --start-col: var(--start-col-desktop);
-        --col-span: var(--col-span-desktop);
-    }
+	grid-column: var(--start-col, 1) / span var(--col-span, 12);
+	--start-col: var(--start-col-mobile);
+	--col-span: var(--col-span-mobile);
+
+	@media screen and (min-width: 780px) {
+		--start-col: var(--start-col-tablet);
+		--col-span: var(--col-span-tablet);
+	}
+
+	@media screen and (min-width: 1080px) {
+		--start-col: var(--start-col-desktop);
+		--col-span: var(--col-span-desktop);
+	}
 
 	/**
 	* Individual Column Alignment

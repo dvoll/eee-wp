@@ -20,7 +20,7 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
-import { TemplateArray } from '@wordpress/blocks';
+import type { TemplateArray } from '@wordpress/blocks';
 
 /**
  * The edit function describes the structure of your block in the context of the

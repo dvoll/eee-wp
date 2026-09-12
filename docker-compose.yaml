@@ -3,7 +3,7 @@ services:
   db:
     image: mariadb:latest
     volumes:
-      - db_data2:/var/lib/mysql
+      - db_data:/var/lib/mysql
     ports:
       - "3306:3306"
     environment:
@@ -78,5 +78,5 @@ services:
     volumes:
       - ./:/app
 volumes:
-  db_data2: {}
+  db_data: {}
   wordpress:

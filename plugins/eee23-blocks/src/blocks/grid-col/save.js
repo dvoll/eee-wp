@@ -13,6 +13,8 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
  *
+ * @param {Object} props            Component props.
+ * @param {Object} props.attributes Block attributes.
  * @return {Element} Element to render.
  */
 export default function save({ attributes }) {
