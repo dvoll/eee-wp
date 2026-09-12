@@ -32,7 +32,7 @@
       "selector": "img",
       "attribute": "alt",
       "default": "",
-      "__experimentalRole": "content"
+      "role": "content"
     },
     "focalPointValueX": {
       "type": "number"
