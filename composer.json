@@ -3,5 +3,8 @@
         "php-stubs/wordpress-stubs": "^6.3",
         "phpstan/phpstan": "^1.10",
         "szepeviktor/phpstan-wordpress": "^1.3"
+    },
+    "scripts": {
+        "phpstan": "phpstan analyse"
     }
 }

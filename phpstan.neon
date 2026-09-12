@@ -3,5 +3,8 @@ parameters:
     paths:
         - themes
         - plugins
+    excludePaths:
+        - '*/node_modules/*'
+        - '*/vendor/*'
 includes:
     - vendor/szepeviktor/phpstan-wordpress/extension.neon

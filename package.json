@@ -1,0 +1,17 @@
+{
+  "name": "eee-wp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "EEE WordPress Project",
+  "scripts": {
+    "build": "npm run build:blocks && npm run build:theme",
+    "build:blocks": "npm --prefix plugins/eee23-blocks run build",
+    "build:theme": "npm --prefix themes/eee-theme run build",
+    "start:blocks": "npm --prefix plugins/eee23-blocks run start",
+    "start:theme": "npm --prefix themes/eee-theme run start",
+    "lint:blocks": "npm --prefix plugins/eee23-blocks run lint:js && npm --prefix plugins/eee23-blocks run lint:css",
+    "format:blocks": "npm --prefix plugins/eee23-blocks run format",
+    "check:php": "docker compose run --rm composer run phpstan",
+    "check": "npm run lint:blocks && npm run check:php"
+  }
+}

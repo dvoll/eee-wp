@@ -3,7 +3,7 @@ services:
   db:
     image: mariadb:latest
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data2:/var/lib/mysql
     ports:
       - "3306:3306"
     environment:
@@ -72,6 +72,11 @@ services:
     ports:
       - 8025:8025
       - 1025:1025
+  composer:
+    # To execute run: 'docker compose run --rm composer <command>'
+    image: composer:lts
+    volumes:
+      - ./:/app
 volumes:
-  db_data: {}
+  db_data2: {}
   wordpress:
