@@ -37,16 +37,16 @@ add_action( 'init', function () {
 	if (
 		defined( 'EEE_SMTP_FROM' )
 	) {
-		add_filter( 'wp_mail_from', fn( $email ) => sanitize_email( (string) EEE_SMTP_FROM ) );
+		add_filter( 'wp_mail_from', fn() => sanitize_email( (string) EEE_SMTP_FROM ) );
 	}
 	if (
 		defined( 'EEE_SMTP_FROM_NAME' )
 	) {
-		add_filter( 'wp_mail_from_name', fn( $name ) => sanitize_text_field( (string) EEE_SMTP_FROM_NAME ) );
+		add_filter( 'wp_mail_from_name', fn() => sanitize_text_field( (string) EEE_SMTP_FROM_NAME ) );
 	}
 } );
 
-add_filter( 'form_block_recipients', function ($recipients) {
+add_filter( 'form_block_recipients', function () {
 	if ( defined( 'EEE_FORM_RECIPIENT' ) ) {
 		return [ sanitize_email( (string) EEE_FORM_RECIPIENT ) ];
 	}
@@ -59,13 +59,7 @@ add_filter( 'form_block_recipients', function ($recipients) {
  */
 function eee_action_wp_mail_failed( $wp_error ): void {
 	if ( wp_get_environment_type() === 'development' ) {
-		error_log( print_r( $wp_error, true ) );
+		error_log( print_r( $wp_error, true ) ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log,WordPress.PHP.DevelopmentFunctions.error_log_print_r -- Intentional dev-only logging guarded by environment check.
 	}
 }
 add_action( 'wp_mail_failed', 'eee_action_wp_mail_failed', 10, 1 );
-
-
-// add_action( 'init', function () {
-// 	// Example inside the the init hook to ensure that the PHPMailer settings are applied before trying to send the email.
-// 	wp_mail( 'josh@bonnick.dev', 'Test Email', 'Hello Mailhog' );
-// } );
