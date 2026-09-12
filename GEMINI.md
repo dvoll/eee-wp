@@ -123,11 +123,20 @@ npm run check:php
 # Lint block JavaScript and CSS
 npm run lint:blocks
 
+# Run block unit and invalidation tests (Jest)
+npm run test:blocks
+
+# Validate theme.json and block.json schemas
+npm run check:schemas
+
 # Auto-format block source code
 npm run format:blocks
 
-# Run all quality checks (JS/CSS lint, PHPCS, PHPStan)
+# Run all quality checks (JS/CSS lint, PHPCS, PHPStan, Schemas, Block tests)
 npm run check
+
+# Assess compatibility with a new or target WordPress version
+npm run assess:wp -- 6.8
 ```
 
 ---

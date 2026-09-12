@@ -18,6 +18,9 @@
     "format:php": "docker compose run --rm composer run phpcbf",
     "lint:php": "docker compose run --rm composer run phpcs",
     "check:php": "docker compose run --rm composer run phpstan",
-    "check": "npm run lint && npm run lint:php && npm run check:php"
+    "check:schemas": "node scripts/validate-schemas.mjs",
+    "test:blocks": "npm --prefix plugins/eee23-blocks run test",
+    "check": "npm run lint && npm run lint:php && npm run check:php && npm run check:schemas && npm run test:blocks",
+    "assess:wp": "node scripts/assess-wp.mjs"
   }
 }

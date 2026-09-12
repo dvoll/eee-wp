@@ -19,7 +19,10 @@ See [GEMINI.md](file:///home/dvoll/code/eee-wp/GEMINI.md) for full project archi
 | Lint PHP (WPCS) | `npm run lint:php` |
 | Auto-format PHP (PHPCBF) | `npm run format:php` |
 | Run PHPStan (Level 6) | `npm run check:php` |
+| Test Blocks (Jest) | `npm run test:blocks` |
+| Validate Schemas | `npm run check:schemas` |
 | Run All Checks | `npm run check` |
+| Assess WP Update | `npm run assess:wp [-- <version>]` |
 
 ## Core Directives
 

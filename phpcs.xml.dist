@@ -22,7 +22,13 @@
     <config name="ignore_warnings_on_exit" value="1"/>
 
     <!-- Set minimum supported WordPress version -->
-    <config name="minimum_supported_wp_version" value="6.2"/>
+    <config name="minimum_supported_wp_version" value="6.4"/>
+
+    <!-- Set PHP test version range (PHP 8.1+) -->
+    <config name="testVersion" value="8.1-"/>
+
+    <!-- Include PHPCompatibilityWP for PHP and WordPress compatibility checking -->
+    <rule ref="PHPCompatibilityWP"/>
 
     <!-- Include WordPress-Extra (Security, Best Practices, Escaping, Nonces) -->
     <rule ref="WordPress-Extra">
