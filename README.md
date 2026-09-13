@@ -1,6 +1,6 @@
 # EEE WordPress (eee-wp)
 
-Containerized WordPress 6.4 development environment for EEE featuring Full Site Editing (FSE), custom Gutenberg blocks, and mail testing.
+Containerized WordPress 7.1 development environment for EEE featuring Full Site Editing (FSE), custom Gutenberg blocks, and mail testing.
 
 ## Quick Start
 
@@ -56,6 +56,19 @@ docker compose run --rm wp-cli <command>
 # or host alias:
 docker-wp <command>
 ```
+
+### React 18 & React 19 Upgrade Path
+
+The custom Gutenberg blocks in `plugins/eee23-blocks/` are currently built with **React 18** (`^18.2.0`) and `@wordpress/scripts` `^26.16.0`. This configuration is fully compatible with the WordPress 7.1 runtime and cleanly passes all block serialization and invalidation tests.
+
+#### Upgrading to React 19 / Modern `@wordpress/*` Packages
+Modern releases of `@wordpress/scripts` (v30+) and `@wordpress/*` packages enforce React 19 peer dependencies (`peer react@"^19.3.0"`). Attempting to upgrade `@wordpress/*` packages without updating React will trigger `ERESOLVE` npm peer dependency errors.
+
+To perform a future upgrade to React 19:
+1. Bump `react` and `react-dom` to `^19.x` in `plugins/eee23-blocks/package.json` (and `themes/eee-theme/package.json` if applicable).
+2. Update `@types/react` to `^19.x`.
+3. Update `@wordpress/scripts` and `@wordpress/*` packages to their latest versions matching React 19.
+4. Rebuild all block assets (`npm run build:blocks`) and run block serialization tests (`npm run test:blocks`) to verify compatibility.
 
 ### Update TODOs
 - Update scripts and check for experimental values

@@ -18,7 +18,7 @@ const colors = {
 
 // Target WordPress version from CLI argument, default to 6.8
 const args = process.argv.slice(2);
-const targetVersion = args[0] && !args[0].startsWith('-') ? args[0] : '6.8';
+const targetVersion = args[0] && !args[0].startsWith('-') ? args[0] : '7.1';
 
 console.log(`${colors.bold}${colors.cyan}====================================================${colors.reset}`);
 console.log(`${colors.bold}   WordPress Update Assessment Runner${colors.reset}`);

@@ -9,9 +9,9 @@ Welcome to the **EEE WordPress (eee-wp)** project repository. This document esta
 This repository is a containerized WordPress development environment powering the EEE web platform. It leverages WordPress Full Site Editing (FSE), custom Gutenberg blocks built with React, custom plugins, and containerized tooling.
 
 ### Technology Stack
-- **WordPress**: 6.4+ (FSE / Block Theme architecture)
+- **WordPress**: 7.1+ (FSE / Block Theme architecture)
 - **PHP**: 8.2 (Container runtime), analyzed with **PHPStan Level 6**
-- **JavaScript / CSS**: React 18, `@wordpress/scripts`, Webpack, SCSS
+- **JavaScript / CSS**: React 18 (with React 19 upgrade path documented in README), `@wordpress/scripts`, Webpack, SCSS
 - **Database**: MariaDB (via Docker Compose)
 - **Mail Testing**: MailHog (SMTP on port 1025, Web UI on port 8025)
 - **Local Dev URLs**:

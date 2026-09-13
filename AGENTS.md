@@ -26,7 +26,7 @@ See [GEMINI.md](file:///home/dvoll/code/eee-wp/GEMINI.md) for full project archi
 
 ## Core Directives
 
-1. **Dockerized Environment**: The project runs WordPress 6.4 and PHP 8.2 in Docker. Always run PHP / Composer commands via `docker compose run --rm composer ...`.
+1. **Dockerized Environment**: The project runs WordPress 7.1 and PHP 8.2 in Docker. Always run PHP / Composer commands via `docker compose run --rm composer ...`.
 2. **Source vs Build**:
    - `plugins/eee23-blocks/src/` -> builds into `build/`. Run `npm run build:blocks`.
    - `themes/eee-theme/resources/` -> builds into `public/`. Run `npm run build:theme`.
