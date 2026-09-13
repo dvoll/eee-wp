@@ -105,4 +105,46 @@ describe('Custom Gutenberg Blocks', () => {
         expect(parsed[0].name).toBe(meta.name);
         expect(parsed[0].isValid).toBe(true);
     });
+
+    test.each(blocks)('$meta.name handles empty/default attributes gracefully without invalidation', ({ meta }) => {
+        const block = createBlock(meta.name, {});
+        expect(block).toBeDefined();
+
+        const serialized = serialize(block);
+        expect(typeof serialized).toBe('string');
+
+        const parsed = parse(serialized);
+        expect(parsed.length).toBe(1);
+        expect(parsed[0].name).toBe(meta.name);
+        expect(parsed[0].isValid).toBe(true);
+    });
+
+    test('eee23-blocks/grid correctly serializes and parses nested eee23-blocks/grid-col children', () => {
+        const gridCol1 = createBlock('eee23-blocks/grid-col', {
+            startCol: 1,
+            colSpan: 6,
+        });
+        const gridCol2 = createBlock('eee23-blocks/grid-col', {
+            startCol: 7,
+            colSpan: 6,
+        });
+        const grid = createBlock('eee23-blocks/grid', {}, [gridCol1, gridCol2]);
+
+        expect(grid).toBeDefined();
+        expect(grid.innerBlocks.length).toBe(2);
+
+        const serialized = serialize(grid);
+        expect(serialized).toContain('wp:eee23-blocks/grid');
+        expect(serialized).toContain('wp:eee23-blocks/grid-col');
+
+        const parsed = parse(serialized);
+        expect(parsed.length).toBe(1);
+        expect(parsed[0].name).toBe('eee23-blocks/grid');
+        expect(parsed[0].isValid).toBe(true);
+        expect(parsed[0].innerBlocks.length).toBe(2);
+        expect(parsed[0].innerBlocks[0].name).toBe('eee23-blocks/grid-col');
+        expect(parsed[0].innerBlocks[0].isValid).toBe(true);
+        expect(parsed[0].innerBlocks[1].name).toBe('eee23-blocks/grid-col');
+        expect(parsed[0].innerBlocks[1].isValid).toBe(true);
+    });
 });

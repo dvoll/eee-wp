@@ -1,6 +1,6 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "name": "eee23-blocks/grid",
   "version": "0.1.0",
   "title": "Layout Grid",
@@ -16,7 +16,7 @@
     ],
     "spacing": {
       "blockGap": {
-        "__experimentalDefault": "1.5em",
+        "default": "1.5em",
         "sides": [
           "vertical",
           "horizontal"
@@ -30,7 +30,7 @@
         "top",
         "bottom"
       ],
-      "__experimentalDefaultControls": {
+      "defaultControls": {
         "padding": true,
         "blockGap": true
       }

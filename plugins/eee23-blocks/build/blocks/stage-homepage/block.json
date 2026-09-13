@@ -1,6 +1,6 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 2,
+  "apiVersion": 3,
   "name": "eee23-blocks/stage-homepage",
   "version": "0.1.0",
   "title": "Bühne (Homepage)",

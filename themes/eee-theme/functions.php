@@ -72,7 +72,6 @@ if(!function_exists('eee_theme_23_styles')):
 		// Register theme stylesheet.
 		$theme_version = wp_get_theme()->get('Version');
 
-		// @phpstan-ignore-next-line
 		$version_string = is_string($theme_version) ? $theme_version : false;
 		wp_register_style(
 			'eee_theme_23-style',

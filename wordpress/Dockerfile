@@ -1,2 +1,2 @@
-FROM wordpress:6.8
+FROM wordpress:7.1
 COPY custom.ini $PHP_INI_DIR/conf.d/

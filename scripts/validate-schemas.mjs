@@ -93,9 +93,114 @@ function validateThemeJson() {
         if (theme.styles) {
             logSuccess('theme.json styles block is valid.');
         }
+
+        // Validate local font assets defined in theme.json
+        validateThemeFonts(theme);
     } catch (err) {
         logError(`Failed to parse theme.json: ${err.message}`);
         errorCount++;
+    }
+}
+
+/**
+ * Validate that local font assets referenced in theme.json exist on disk
+ */
+function validateThemeFonts(theme) {
+    const themeDir = path.join(rootDir, 'themes/eee-theme');
+    const fontFamilies = theme?.settings?.typography?.fontFamilies || [];
+
+    for (const fam of fontFamilies) {
+        if (!Array.isArray(fam.fontFace)) continue;
+        for (const face of fam.fontFace) {
+            const srcs = Array.isArray(face.src) ? face.src : [face.src];
+            for (const s of srcs) {
+                if (typeof s === 'string' && s.startsWith('file:./')) {
+                    const localPath = path.join(themeDir, s.replace(/^file:\.\//, ''));
+                    if (!fs.existsSync(localPath)) {
+                        logError(`theme.json references font "${s}" which does not exist at ${localPath}`);
+                        errorCount++;
+                    } else {
+                        logSuccess(`Font asset verified: ${s}`);
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Validate FSE templates and template parts in themes/eee-theme
+ */
+function validateFseTemplates() {
+    const themeDir = path.join(rootDir, 'themes/eee-theme');
+    const templatesDir = path.join(themeDir, 'templates');
+    const partsDir = path.join(themeDir, 'parts');
+    console.log(`\n${colors.bold}Validating FSE templates & template parts...${colors.reset}`);
+
+    const parts = fs.existsSync(partsDir)
+        ? fs.readdirSync(partsDir).filter((f) => f.endsWith('.html')).map((f) => f.replace(/\.html$/, ''))
+        : [];
+
+    const templateFiles = [];
+    if (fs.existsSync(templatesDir)) {
+        templateFiles.push(...fs.readdirSync(templatesDir).filter((f) => f.endsWith('.html')).map((f) => path.join(templatesDir, f)));
+    }
+    if (fs.existsSync(partsDir)) {
+        templateFiles.push(...fs.readdirSync(partsDir).filter((f) => f.endsWith('.html')).map((f) => path.join(partsDir, f)));
+    }
+
+    if (templateFiles.length === 0) {
+        logWarn('No FSE template files (.html) found.');
+        return;
+    }
+
+    for (const tpl of templateFiles) {
+        const relPath = path.relative(themeDir, tpl);
+        const content = fs.readFileSync(tpl, 'utf8');
+
+        // Check template-part references: <!-- wp:template-part {"slug":"header"...} /-->
+        const partMatches = content.matchAll(/<!--\s*wp:template-part\s+({.*?})\s*\/-->/gs);
+        for (const m of partMatches) {
+            try {
+                const config = JSON.parse(m[1]);
+                if (config.slug && !parts.includes(config.slug)) {
+                    logError(`${relPath} references missing template-part slug: "${config.slug}"`);
+                    errorCount++;
+                } else if (config.slug) {
+                    logSuccess(`${relPath} references valid template-part: "${config.slug}"`);
+                }
+            } catch (e) {
+                logWarn(`${relPath}: Could not parse template-part JSON: ${m[1]}`);
+                warnCount++;
+            }
+        }
+
+        // Check balanced wp comment blocks
+        const openBlocks = [];
+        const blockTokens = content.match(/<!--\s*\/?wp:[\w\/-]+(?:\s+({.*?}))?\s*(\/?)-->/gs) || [];
+        for (const token of blockTokens) {
+            if (token.includes('/-->')) {
+                // Self-closing void block like <!-- wp:post-title ... /-->
+                continue;
+            }
+            if (token.startsWith('<!-- /wp:')) {
+                const blockName = token.replace(/<!--\s*\/wp:([\w\/-]+)\s*-->/, '$1');
+                const last = openBlocks.pop();
+                if (last !== blockName) {
+                    logWarn(`${relPath}: Mismatched closing block <!-- /wp:${blockName} --> (expected <!-- /wp:${last || 'none'} -->)`);
+                    warnCount++;
+                }
+            } else if (token.startsWith('<!-- wp:')) {
+                const match = token.match(/<!--\s*wp:([\w\/-]+)/);
+                if (match) {
+                    openBlocks.push(match[1]);
+                }
+            }
+        }
+        if (openBlocks.length > 0) {
+            logWarn(`${relPath}: Unclosed block comments remaining: ${openBlocks.join(', ')}`);
+            warnCount++;
+        }
     }
 }
 
@@ -104,6 +209,7 @@ function validateThemeJson() {
  */
 function validateBlockJsons() {
     const blocksDir = path.join(rootDir, 'plugins/eee23-blocks/src/blocks');
+    const buildBlocksDir = path.join(rootDir, 'plugins/eee23-blocks/build/blocks');
     console.log(`\n${colors.bold}Validating custom block.json files...${colors.reset}`);
 
     if (!fs.existsSync(blocksDir)) {
@@ -163,20 +269,27 @@ function validateBlockJsons() {
                 errorCount++;
             }
 
-            // Check file references
+            // Check file references (both in src and compiled build output)
             const checkFileRef = (field, relPath) => {
                 if (!relPath) return;
                 const cleanPath = relPath.replace(/^file:\.\//, './');
                 const resolved = path.join(blocksDir, folder, cleanPath);
-                // Also check if src has tsx/ts/scss equivalent
+                const buildResolved = path.join(buildBlocksDir, folder, cleanPath);
+
                 const exists =
                     fs.existsSync(resolved) ||
+                    fs.existsSync(buildResolved) ||
                     fs.existsSync(resolved.replace(/\.js$/, '.tsx')) ||
                     fs.existsSync(resolved.replace(/\.js$/, '.ts')) ||
-                    fs.existsSync(resolved.replace(/\.css$/, '.scss'));
+                    fs.existsSync(resolved.replace(/\.css$/, '.scss')) ||
+                    fs.existsSync(path.join(blocksDir, folder, 'editor.scss')) ||
+                    fs.existsSync(path.join(blocksDir, folder, 'style.scss'));
+
                 if (!exists) {
-                    logWarn(`Block "${folder}" references ${field} "${relPath}" which was not found locally in src/`);
+                    logWarn(`Block "${folder}" references ${field} "${relPath}" which was not found locally in src/ or build/`);
                     warnCount++;
+                } else {
+                    logSuccess(`Asset reference verified: ${field} -> ${relPath}`);
                 }
             };
 
@@ -201,6 +314,7 @@ function validateBlockJsons() {
 
 console.log(`${colors.bold}=== WordPress Schema & Metadata Validation ===${colors.reset}`);
 validateThemeJson();
+validateFseTemplates();
 validateBlockJsons();
 
 console.log(`\n${colors.bold}--- Schema Validation Summary ---${colors.reset}`);
