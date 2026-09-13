@@ -10,6 +10,9 @@
         "wp-coding-standards/wpcs": "^3.4"
     },
     "config": {
+        "platform": {
+            "php": "8.4.10"
+        },
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
         }

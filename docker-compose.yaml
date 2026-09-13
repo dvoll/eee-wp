@@ -15,10 +15,10 @@ services:
   wordpress:
     depends_on:
       - db
-    # image: wordpress:6.4
-    build: wordpress
+    image: wordpress:7.1-php8.4-apache
     volumes:
       - wordpress:/var/www/html
+      - ./wordpress/custom.ini:/usr/local/etc/php/conf.d/custom.ini:ro
       - ./plugins/eee23-blocks:/var/www/html/wp-content/plugins/eee23-blocks
       - ./plugins/eee23-mail-config:/var/www/html/wp-content/plugins/eee23-mail-config
       - ./themes/eee-theme:/var/www/html/wp-content/themes/eee-theme
@@ -54,7 +54,7 @@ services:
     depends_on:
       - db
       - wordpress
-    image: wordpress:cli
+    image: wordpress:cli-php8.4
     volumes_from:
       - wordpress
     user: 33:33

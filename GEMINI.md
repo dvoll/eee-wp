@@ -10,7 +10,7 @@ This repository is a containerized WordPress development environment powering th
 
 ### Technology Stack
 - **WordPress**: 7.1+ (FSE / Block Theme architecture)
-- **PHP**: 8.2 (Container runtime), analyzed with **PHPStan Level 6**
+- **PHP**: 8.4 (Container runtime), analyzed with **PHPStan Level 6**
 - **JavaScript / CSS**: React 18 (with React 19 upgrade path documented in README), `@wordpress/scripts`, Webpack, SCSS
 - **Database**: MariaDB (via Docker Compose)
 - **Mail Testing**: MailHog (SMTP on port 1025, Web UI on port 8025)
@@ -145,7 +145,7 @@ npm run assess:wp -- 6.8
 
 ### Critical Rules for AI Agents
 
-1. **Docker for PHP and Composer**: Always execute Composer and PHPStan commands through Docker (`docker compose run --rm composer ...`), not the host PHP, to ensure consistent PHP 8.2 compatibility.
+1. **Docker for PHP and Composer**: Always execute Composer and PHPStan commands through Docker (`docker compose run --rm composer ...`), not the host PHP, to ensure consistent PHP 8.4 compatibility.
 2. **Never Edit Output Folders Directly**:
    - `plugins/eee23-blocks/build/` is generated from `plugins/eee23-blocks/src/`.
    - `themes/eee-theme/public/` is generated from `themes/eee-theme/resources/`.
